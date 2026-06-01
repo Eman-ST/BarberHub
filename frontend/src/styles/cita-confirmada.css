@@ -1,0 +1,152 @@
+.cc-page {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.cc-card {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.cc-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px #111, 0 0 0 6px #fff;
+}
+
+.cc-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.cc-message {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.65;
+  margin-bottom: 28px;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cc-message strong {
+  color: #444;
+  font-weight: 600;
+}
+
+.cc-summary {
+  text-align: left;
+  border: 1.5px solid #ddd0ba;
+  border-radius: 12px;
+  background: #faf9f7;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.cc-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e8e0d4;
+  background: #fff;
+}
+
+.cc-summary-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+}
+
+.cc-summary-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #c9a227;
+}
+
+.cc-summary-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.cc-summary-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cc-service-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.cc-shop-name {
+  font-size: 13px;
+  color: #666;
+}
+
+.cc-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cc-btn-outline,
+.cc-btn-primary {
+  padding: 14px 12px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.cc-btn-outline {
+  background: #f8f8f8;
+  border: 1.5px solid #ddd0ba;
+  color: #111;
+}
+
+.cc-btn-outline:hover {
+  background: #f0f0f0;
+}
+
+.cc-btn-primary {
+  background: #111;
+  border: none;
+  color: #c9a227;
+}
+
+.cc-btn-primary:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 400px) {
+  .cc-actions {
+    grid-template-columns: 1fr;
+  }
+}

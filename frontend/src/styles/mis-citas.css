@@ -1,0 +1,78 @@
+.mc-page {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.mc-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.mc-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.mc-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.mc-cita-item {
+  border: 1.5px solid #ddd0ba;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  background: #faf9f7;
+}
+
+.mc-cita-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+}
+
+.mc-cita-price {
+  color: #c9a227;
+}
+
+.mc-cita-servicio {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.mc-cita-lugar {
+  font-size: 13px;
+  color: #666;
+}
+
+.mc-btn-home {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #111;
+  color: #c9a227;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mc-btn-home:hover {
+  background: #222;
+}
