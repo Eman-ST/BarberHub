@@ -34,6 +34,17 @@ export const BARBERIAS = [
       { id: "facial", nombre: "Facial masculino", precio: 400, icono: "user" },
       { id: "corte", nombre: "Cortes de pelo", precio: 150, icono: "scissors" },
     ],
+    serviciosExtendidos: [
+      { id: "barba-premium", nombre: "Barba premium", precio: 270, icono: "moustache" },
+      { id: "afeitado", nombre: "Afeitado clásico", precio: 250, icono: "razor" },
+      { id: "facial", nombre: "Facial masculino", precio: 400, icono: "user" },
+      { id: "corte", nombre: "Cortes de pelo", precio: 150, icono: "scissors" },
+      { id: "combo", nombre: "Corte y Barba", precio: 330, icono: "razor" },
+      { id: "fade", nombre: "Fade degradado", precio: 350, icono: "scissors" },
+      { id: "perfilado", nombre: "Perfilado", precio: 190, icono: "moustache" },
+      { id: "rasurado-cabeza", nombre: "Rasurado de cabeza", precio: 300, icono: "razor" },
+      { id: "tintura", nombre: "Tintura de cabello", precio: 550, icono: "user" },
+    ],
     barberos: [
       { id: "alexis", nombre: "Alexis Duran", rating: 4.2, opiniones: 120, foto: "https://i.pravatar.cc/120?u=alexis-duran" },
       { id: "carlos", nombre: "Carlos Ruiz", rating: 4.8, opiniones: 89, foto: "https://i.pravatar.cc/120?u=carlos-ruiz" },
@@ -69,6 +80,11 @@ export const BARBERIAS = [
       { id: "corte", nombre: "Corte clásico", precio: 180, icono: "scissors" },
       { id: "barba", nombre: "Perfilado de barba", precio: 220, icono: "moustache" },
     ],
+    serviciosExtendidos: [
+      { id: "corte", nombre: "Corte clásico", precio: 180, icono: "scissors" },
+      { id: "barba", nombre: "Perfilado de barba", precio: 220, icono: "moustache" },
+      { id: "afeitado", nombre: "Afeitado tradicional", precio: 260, icono: "razor" },
+    ],
     barberos: [
       { id: "jorge", nombre: "Jorge Vega", rating: 4.6, opiniones: 95, foto: "https://i.pravatar.cc/120?u=jorge-vega" },
     ],
@@ -97,6 +113,11 @@ export const BARBERIAS = [
     servicios: [
       { id: "fade", nombre: "Degradado / Fade", precio: 200, icono: "scissors" },
       { id: "combo", nombre: "Corte + barba", precio: 320, icono: "razor" },
+    ],
+    serviciosExtendidos: [
+      { id: "fade", nombre: "Degradado / Fade", precio: 200, icono: "scissors" },
+      { id: "combo", nombre: "Corte + barba", precio: 320, icono: "razor" },
+      { id: "perfilado", nombre: "Perfilado", precio: 180, icono: "moustache" },
     ],
     barberos: [
       { id: "luis", nombre: "Luis Hernández", rating: 4.9, opiniones: 210, foto: "https://i.pravatar.cc/120?u=luis-hernandez" },

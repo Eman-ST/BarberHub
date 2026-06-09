@@ -2,10 +2,16 @@
   min-height: 100vh;
   background: #ffffff;
   display: flex;
+  flex-direction: column;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.cc-body {
+  flex: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
-  font-family: "Inter", system-ui, sans-serif;
 }
 
 .cc-card {
@@ -87,12 +93,20 @@
   padding: 16px 18px;
 }
 
+.cc-summary-logo-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 .cc-summary-logo {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  flex-shrink: 0;
+  display: block;
 }
 
 .cc-service-name {

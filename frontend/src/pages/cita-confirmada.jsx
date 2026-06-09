@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconCircleCheck } from "@tabler/icons-react";
 import { BARBERIA_DEMO } from "../data/barberia-demo";
 import { formatearHorarioCorto, keyAFecha } from "../utils/fecha";
+import PageNavbar from "../components/page-navbar";
+import BrandLogo from "../components/brand-logo";
 import "../styles/cita-confirmada.css";
 
 const CITA_DEMO = {
@@ -34,6 +36,8 @@ export default function CitaConfirmada() {
 
   return (
     <div className="cc-page">
+      <PageNavbar />
+      <div className="cc-body">
       <div className="cc-card">
         <div className="cc-icon-wrap" aria-hidden>
           <IconCircleCheck size={36} stroke={2} color="#fff" />
@@ -56,10 +60,9 @@ export default function CitaConfirmada() {
           </div>
 
           <div className="cc-summary-body">
-            <img
-              className="cc-summary-logo"
-              src="/barberhublogo.jpg"
-              alt=""
+            <BrandLogo
+              className="cc-summary-logo-btn"
+              imgClassName="cc-summary-logo"
             />
             <div>
               <div className="cc-service-name">{cita.servicio}</div>
@@ -86,6 +89,7 @@ export default function CitaConfirmada() {
             Ir al Inicio
           </button>
         </div>
+      </div>
       </div>
     </div>
   );

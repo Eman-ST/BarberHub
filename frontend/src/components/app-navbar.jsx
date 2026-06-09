@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import BrandLogo from "./brand-logo";
 import "../styles/app-navbar.css";
 
 export default function AppNavbar({ showAgendaLocal = false }) {
@@ -6,18 +7,10 @@ export default function AppNavbar({ showAgendaLocal = false }) {
 
   return (
     <nav className="app-navbar">
-      <button
-        type="button"
+      <BrandLogo
         className="app-nav-logo-btn"
-        onClick={() => navigate("/")}
-        aria-label="Ir al inicio"
-      >
-        <img
-          className="app-nav-logo-img"
-          src="/barberhublogo.jpg"
-          alt="Barber Hub"
-        />
-      </button>
+        imgClassName="app-nav-logo-img"
+      />
 
       <div className="app-nav-actions">
         {showAgendaLocal && (

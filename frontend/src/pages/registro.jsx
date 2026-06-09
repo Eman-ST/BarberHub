@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiFetch } from "../utils/api";
+import { evaluarPassword } from "../utils/passwordStrength";
+import PasswordStrength from "../components/password-strength";
+import BrandLogo from "../components/brand-logo";
 import "../styles/registro.css";
 
 // Pasos del registro con línea conectora
@@ -50,17 +54,29 @@ export default function Registro() {
       setError("Las contraseñas no coinciden.");
       return;
     }
+
+    const { valida } = evaluarPassword(form.password);
+    if (!valida) {
+      setError(
+        "La contraseña debe tener al menos 8 caracteres, una letra, un número y un símbolo.",
+      );
+      return;
+    }
+
     setLoading(true);
-    // TODO: conectar con el backend Node.js
-    // const res = await fetch("/api/auth/registro", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(form),
-    // });
-    setTimeout(() => {
+    try {
+      await apiFetch("/auth/registro", {
+        method: "POST",
+        body: JSON.stringify(form),
+      });
+      navigate("/verificar-correo", {
+        state: { email: form.email.trim() },
+      });
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setLoading(false);
-      // navigate("/verificar-correo");
-    }, 1000);
+    }
   };
 
   return (
@@ -70,10 +86,7 @@ export default function Registro() {
       <div className="reg-left">
         <div className="reg-left-content">
 
-          {/* Logo */}
-          <div className="reg-logo">
-            <img src="/barberhublogo.jpg" alt="Barber Hub" />
-          </div>
+          <BrandLogo className="reg-logo" imgClassName="reg-logo-img" />
 
           {/* Título sección */}
           <p className="reg-steps-label">COMO FUNCIONA EL REGISTRO</p>
@@ -150,8 +163,8 @@ export default function Registro() {
               required
             />
 
-            {/* Contraseña / Confirmar */}
-            <div className="reg-row-2">
+            {/* Contraseña */}
+            <div className="reg-password-block">
               <input
                 className="reg-input"
                 type="password"
@@ -161,16 +174,18 @@ export default function Registro() {
                 onChange={handleChange}
                 required
               />
-              <input
-                className="reg-input"
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirmar contraseña"
-                value={form.confirmPassword}
-                onChange={handleChange}
-                required
-              />
+              <PasswordStrength password={form.password} />
             </div>
+
+            <input
+              className="reg-input"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirmar contraseña"
+              value={form.confirmPassword}
+              onChange={handleChange}
+              required
+            />
 
             {/* Error mensaje */}
             {error && <p className="reg-error">{error}</p>}

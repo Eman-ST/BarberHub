@@ -45,6 +45,10 @@ export default function BarberiaPerfil() {
     navigate("/agenda-local", { state: { barberiaId: barberia.id } });
   };
 
+  const verMasServicios = () => {
+    navigate(`/barberia/${barberia.id}/servicios`);
+  };
+
   return (
     <div className="bp-page">
       <AppNavbar />
@@ -115,7 +119,7 @@ export default function BarberiaPerfil() {
                 );
               })}
             </ul>
-            <button type="button" className="bp-btn-more">
+            <button type="button" className="bp-btn-more" onClick={verMasServicios}>
               Ver más servicios
             </button>
           </section>

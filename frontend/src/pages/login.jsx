@@ -1,29 +1,45 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { apiFetch, saveSession } from "../utils/api";
+import BrandLogo from "../components/brand-logo";
 import "../styles/login.css";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
+  const { state } = useLocation();
+  const [form, setForm] = useState({
+    email: state?.email ?? "",
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const mensajeExito = state?.cuentaVerificada ? state.mensaje : null;
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: conectar con el backend Node.js
-    // const res = await fetch("/api/auth/login", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(form),
-    // });
-    setTimeout(() => {
+    setError("");
+    try {
+      const data = await apiFetch("/auth/login", {
+        method: "POST",
+        body: JSON.stringify(form),
+      });
+      saveSession({ token: data.token, user: data.user });
+      navigate("/explorar");
+    } catch (err) {
+      if (err.code === "EMAIL_NO_VERIFICADO") {
+        navigate("/verificar-correo", { state: { email: form.email.trim() } });
+        return;
+      }
+      setError(err.message);
+    } finally {
       setLoading(false);
-      // navigate("/explorar");
-    }, 1000);
+    }
   };
 
   return (
@@ -34,10 +50,7 @@ export default function Login() {
         <div className="login-overlay" />
         <div className="login-left-content">
 
-          {/* Logo */}
-          <div className="login-logo">
-            <img src="/barberhublogo.jpg" alt="Barber Hub" />
-          </div>
+          <BrandLogo className="login-logo" imgClassName="login-logo-img" />
 
           {/* Texto hero */}
           <div className="login-hero-text">
@@ -64,6 +77,12 @@ export default function Login() {
           <h1 className="login-title">¡Bienvenido!</h1>
           <p className="login-subtitle">Inicia sesión para continuar</p>
 
+          {mensajeExito && (
+            <p className="login-success" role="status">
+              {mensajeExito}
+            </p>
+          )}
+
           <form className="login-form" onSubmit={handleSubmit}>
             <input
               className="login-input"
@@ -84,6 +103,8 @@ export default function Login() {
               onChange={handleChange}
               required
             />
+
+            {error && <p className="login-error">{error}</p>}
 
             <div className="login-forgot">
               <button

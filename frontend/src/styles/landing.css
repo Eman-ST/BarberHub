@@ -22,27 +22,33 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--black);
+  background: rgba(17, 17, 17, 0.96);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 48px;
-  height: 62px;
+  padding: 0 56px;
+  height: 68px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .lp-nav-logo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  text-decoration: none;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .lp-nav-logo-img {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
 }
 
 .lp-nav-actions {
@@ -52,7 +58,7 @@
 }
 
 .lp-btn-outline {
-  padding: 8px 20px;
+  padding: 9px 20px;
   border-radius: 22px;
   border: 1.5px solid rgba(255, 255, 255, 0.45);
   background: transparent;
@@ -61,12 +67,16 @@
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, transform 0.15s, background 0.2s;
 }
-.lp-btn-outline:hover { border-color: #fff; }
+.lp-btn-outline:hover {
+  border-color: #fff;
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.05);
+}
 
 .lp-btn-gold {
-  padding: 8px 22px;
+  padding: 10px 24px;
   border-radius: 22px;
   border: none;
   background: var(--gold);
@@ -81,8 +91,11 @@
 
 /* ── HERO ── */
 .lp-hero {
-  background: var(--white);
-  padding: 96px 40px 88px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(201, 162, 39, 0.09), transparent 42%),
+    radial-gradient(circle at 80% 0%, rgba(184, 114, 82, 0.1), transparent 38%),
+    linear-gradient(180deg, #ffffff 0%, #f9f7f3 100%);
+  padding: 104px 40px 96px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -93,22 +106,24 @@
   display: inline-block;
   padding: 7px 22px;
   border-radius: 22px;
-  background: var(--terra);
+  background: rgba(184, 114, 82, 0.14);
+  border: 1px solid rgba(184, 114, 82, 0.35);
   color: #fff;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 26px;
+  color: var(--terra);
+  margin-bottom: 22px;
 }
 
 .lp-hero-title {
-  font-size: clamp(32px, 4.5vw, 52px);
+  font-size: clamp(34px, 4.8vw, 58px);
   font-weight: 800;
   line-height: 1.18;
   color: var(--black);
   max-width: 680px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .lp-accent { color: var(--terra); }
@@ -118,26 +133,26 @@
   color: var(--gray);
   max-width: 500px;
   line-height: 1.75;
-  margin-bottom: 44px;
+  margin-bottom: 34px;
 }
 
 /* ── SEARCH BOX ── */
 .lp-search-wrap {
   width: 100%;
-  max-width: 590px;
+  max-width: 660px;
   background: var(--white);
   border: 1.5px solid var(--border);
   border-radius: 50px;
   display: flex;
   align-items: center;
   padding: 6px 6px 6px 20px;
-  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
-  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.08);
+  margin-bottom: 18px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .lp-search-wrap:focus-within {
   border-color: var(--gold);
-  box-shadow: 0 3px 18px rgba(201, 162, 39, 0.15);
+  box-shadow: 0 12px 30px rgba(201, 162, 39, 0.18);
 }
 
 .lp-search-icon { flex-shrink: 0; margin-right: 10px; }
@@ -170,10 +185,25 @@
   white-space: nowrap;
   flex-shrink: 0;
   margin-right: 8px;
+  border: none;
+  background: transparent;
+  font-family: var(--font);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.lp-search-loc:hover:not(:disabled) {
+  color: var(--terra);
+}
+
+.lp-search-loc:disabled {
+  opacity: 0.75;
+  cursor: wait;
 }
 
 .lp-btn-search {
-  padding: 10px 22px;
+  padding: 11px 24px;
   border-radius: 40px;
   border: none;
   background: var(--gold);
@@ -184,9 +214,12 @@
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
-.lp-btn-search:hover { background: var(--gold2); }
+.lp-btn-search:hover {
+  background: var(--gold2);
+  transform: translateY(-1px);
+}
 
 /* ── CHIPS ── */
 .lp-chips-row {
@@ -200,21 +233,26 @@
 .lp-chips-label { font-size: 13px; color: var(--lgray); }
 
 .lp-chip {
-  padding: 5px 14px;
+  padding: 6px 14px;
   border-radius: 16px;
   border: 1px solid var(--border);
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.8);
   font-size: 12px;
   color: var(--gray);
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.15s, color 0.15s, transform 0.15s, background 0.15s;
 }
-.lp-chip:hover { border-color: var(--gold); color: var(--gold); }
+.lp-chip:hover {
+  border-color: var(--gold);
+  color: #7b6320;
+  transform: translateY(-1px);
+  background: #fff;
+}
 
 /* ── DOS EXPERIENCIAS ── */
 .lp-two-exp {
-  background: var(--cream);
-  padding: 80px 48px;
+  background: linear-gradient(180deg, #f4ecde 0%, #f0e6d6 100%);
+  padding: 86px 48px;
 }
 
 .lp-sec-head {
@@ -239,14 +277,14 @@
 
 .lp-exp-card {
   background: var(--white);
-  border-radius: 16px;
-  padding: 28px;
+  border-radius: 18px;
+  padding: 30px;
   border: 1px solid var(--border);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .lp-exp-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 42px rgba(17, 17, 17, 0.12);
 }
 
 /* Fila de íconos Tabler */
@@ -311,7 +349,7 @@
 /* ── TESTIMONIOS ── */
 .lp-testi {
   background: var(--white);
-  padding: 80px 48px;
+  padding: 88px 48px;
   text-align: center;
 }
 
@@ -343,11 +381,12 @@
 }
 
 .lp-testi-card {
-  background: var(--cream);
-  border-radius: 16px;
+  background: linear-gradient(180deg, #f4ecdd 0%, #efe3d1 100%);
+  border-radius: 18px;
   padding: 28px;
   border: 1px solid var(--border);
   text-align: left;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.05);
 }
 
 .lp-stars { display: flex; gap: 3px; margin-bottom: 14px; }
@@ -391,11 +430,10 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
   .lp-navbar { padding: 0 20px; }
-  .lp-hero { padding: 60px 20px; }
+  .lp-hero { padding: 68px 20px 60px; }
   .lp-two-exp, .lp-testi { padding: 60px 20px; }
   .lp-exp-grid, .lp-testi-grid { grid-template-columns: 1fr; }
   .lp-search-wrap { flex-wrap: wrap; border-radius: 14px; padding: 12px 16px; gap: 8px; }
   .lp-search-sep { display: none; }
   .lp-btn-search { width: 100%; border-radius: 8px; padding: 11px; }
-  .lp-btn-outline:first-child { display: none; }
 }

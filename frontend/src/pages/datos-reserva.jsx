@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IconCircleCheck } from "@tabler/icons-react";
 import { BARBERIA_DEMO } from "../data/barberia-demo";
+import { apiFetch } from "../utils/api";
 import {
   formatearHorarioCita,
   keyAFecha,
 } from "../utils/fecha";
+import PageNavbar from "../components/page-navbar";
 import "../styles/datos-reserva.css";
 
 const RESERVA_DEMO = {
@@ -22,6 +24,7 @@ export default function DatosReserva() {
   const { state } = useLocation();
 
   const reserva = {
+    barberiaId: state?.barberiaId ?? "urban-cuts",
     establecimiento: state?.establecimiento ?? RESERVA_DEMO.establecimiento,
     servicio: state?.servicio ?? RESERVA_DEMO.servicio,
     precio: state?.precio ?? RESERVA_DEMO.precio,
@@ -38,7 +41,7 @@ export default function DatosReserva() {
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState("");
 
-  const confirmar = (e) => {
+  const confirmar = async (e) => {
     e.preventDefault();
     if (!nombre.trim() || !telefono.trim()) {
       setError("Completa tu nombre y teléfono para confirmar la cita.");
@@ -48,9 +51,22 @@ export default function DatosReserva() {
     setEnviando(true);
     setError("");
 
-    // TODO: POST /api/citas con datos reales
-    setTimeout(() => {
-      setEnviando(false);
+    try {
+      await apiFetch("/citas", {
+        method: "POST",
+        body: JSON.stringify({
+          barberiaId: reserva.barberiaId,
+          establecimiento: reserva.establecimiento,
+          servicio: reserva.servicio,
+          precio: reserva.precio,
+          moneda: reserva.moneda,
+          fecha: reserva.fecha,
+          hora: reserva.hora,
+          nombre: nombre.trim(),
+          telefono: telefono.trim(),
+        }),
+      });
+
       navigate("/cita-confirmada", {
         state: {
           ...reserva,
@@ -58,11 +74,16 @@ export default function DatosReserva() {
           telefono: telefono.trim(),
         },
       });
-    }, 800);
+    } catch (err) {
+      setError(err.message);
+      setEnviando(false);
+    }
   };
 
   return (
     <div className="dr-page">
+      <PageNavbar />
+      <div className="dr-body">
       <div className="dr-card">
         <div className="dr-icon-wrap" aria-hidden>
           <IconCircleCheck size={36} stroke={2} color="#fff" />
@@ -137,6 +158,7 @@ export default function DatosReserva() {
             </button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

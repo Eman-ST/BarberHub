@@ -15,6 +15,7 @@ import {
   IconChartBar,
   IconUsers,
 } from "@tabler/icons-react";
+import BrandLogo from "../components/brand-logo";
 import "../styles/landing.css";
 
 // ─── DATOS ────────────────────────────────────────────────────────────────────
@@ -82,26 +83,56 @@ function Stars({ count = 5 }) {
 // ─── LANDING ──────────────────────────────────────────────────────────────────
 export default function Landing() {
   const [query, setQuery] = useState("");
+  const [coords, setCoords] = useState(null);
+  const [geoStatus, setGeoStatus] = useState("idle");
   const navigate = useNavigate();
+
+  const solicitarUbicacion = () => {
+    if (!navigator.geolocation) {
+      setGeoStatus("error");
+      return;
+    }
+
+    setGeoStatus("loading");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setCoords({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        });
+        setGeoStatus("granted");
+      },
+      () => {
+        setGeoStatus("denied");
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      },
+    );
+  };
+
+  const buscarBarberias = () => {
+    const params = new URLSearchParams();
+    if (query.trim()) params.set("q", query.trim());
+    if (coords) {
+      params.set("lat", String(coords.lat));
+      params.set("lng", String(coords.lng));
+    }
+    const qs = params.toString();
+    navigate(qs ? `/explorar?${qs}` : "/explorar");
+  };
 
   return (
     <>
       {/* ── NAVBAR ── */}
       <nav className="lp-navbar">
-        <a className="lp-nav-logo" href="/">
-          <img
-            className="lp-nav-logo-img"
-            src="/barberhublogo.jpg"
-            alt="Barber Hub"
-          />
-        </a>
+        <BrandLogo className="lp-nav-logo" imgClassName="lp-nav-logo-img" />
 
         <div className="lp-nav-actions">
           <button className="lp-btn-outline" onClick={() => navigate("/agenda-local")}>
             Agenda en local
-          </button>
-          <button className="lp-btn-outline" onClick={() => navigate("/explorar")}>
-            Buscar barberías
           </button>
           <button className="lp-btn-gold" onClick={() => navigate("/login")}>
             Iniciar sesión
@@ -134,13 +165,23 @@ export default function Landing() {
             onChange={(e) => setQuery(e.target.value)}
           />
           <div className="lp-search-sep" />
-          <div className="lp-search-loc">
+          <button
+            type="button"
+            className="lp-search-loc"
+            onClick={solicitarUbicacion}
+            disabled={geoStatus === "loading"}
+            title="Usar mi ubicación"
+          >
             <IconMapPin size={15} color="#b87252" />
-            Mi ubicación actual
-          </div>
+            {geoStatus === "loading"
+              ? "Obteniendo ubicación..."
+              : geoStatus === "granted"
+                ? "Ubicación activada"
+                : "Mi ubicación actual"}
+          </button>
           <button
             className="lp-btn-search"
-            onClick={() => navigate(`/explorar?q=${query}`)}
+            onClick={buscarBarberias}
           >
             Buscar Barberías
           </button>

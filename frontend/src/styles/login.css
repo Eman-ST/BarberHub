@@ -53,7 +53,14 @@
   padding: 36px 44px 28px;
 }
 
-.login-logo img {
+.login-logo {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.login-logo-img {
   width: 96px;
   height: 96px;
   border-radius: 50%;
@@ -119,6 +126,29 @@
   color: var(--lgray);
   text-align: center;
   margin-bottom: 36px;
+}
+
+.login-error {
+  font-size: 14px;
+  color: #a12b2b;
+  background: #fdf0f0;
+  border: 1px solid #e8b4b4;
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.login-success {
+  font-size: 14px;
+  color: #2d7a4a;
+  background: #edf7f0;
+  border: 1px solid #b8dfc4;
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.45;
 }
 
 .login-form {

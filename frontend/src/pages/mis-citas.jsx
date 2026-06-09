@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatearHorarioCorto, keyAFecha } from "../utils/fecha";
 import { BARBERIA_DEMO } from "../data/barberia-demo";
+import PageNavbar from "../components/page-navbar";
 import "../styles/mis-citas.css";
 
 export default function MisCitas() {
@@ -20,6 +21,8 @@ export default function MisCitas() {
 
   return (
     <div className="mc-page">
+      <PageNavbar />
+      <div className="mc-body">
       <div className="mc-card">
         <h1 className="mc-title">Mis citas</h1>
         <p className="mc-subtitle">Próximamente verás aquí todas tus reservas.</p>
@@ -42,6 +45,7 @@ export default function MisCitas() {
         >
           Ir al Inicio
         </button>
+      </div>
       </div>
     </div>
   );
