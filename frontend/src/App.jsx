@@ -14,6 +14,8 @@ import RecuperarPassword from "./pages/recuperar-password";
 import RecuperarPasswordEnviado from "./pages/recuperar-password-enviado";
 import RestablecerPassword from "./pages/restablecer-password";
 import RestablecerPasswordExito from "./pages/restablecer-password-exito";
+import OpinionBarberia from "./pages/opinion-barberia";
+import OpinionBarbero from "./pages/opinion-barbero";
 
 export default function App() {
   return (
@@ -34,7 +36,9 @@ export default function App() {
         <Route path="/recuperar-password-enviado" element={<RecuperarPasswordEnviado />} />
         <Route path="/restablecer-password" element={<RestablecerPassword />} />
         <Route path="/restablecer-password-exito" element={<RestablecerPasswordExito />} />
+        <Route path="/opinion-barberia" element={<OpinionBarberia />} />
+        <Route path="/opinion-barbero" element={<OpinionBarbero />} />
       </Routes>
     </BrowserRouter>
   );
-}
+}  

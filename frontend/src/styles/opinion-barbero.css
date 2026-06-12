@@ -1,0 +1,251 @@
+
+
+:root {
+  --ve-gold: #f0c75e;
+  --ve-gold-dark: #d8b24a;
+  --ve-border: #d9d9d9;
+  --ve-text-muted: #9a9a9a;
+  --ve-radius: 12px;
+}
+
+.ve-page {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+/* ---------------- HEADER ---------------- */
+.ve-header {
+  background-color: #000000;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.ve-logo {
+  height: 48px;
+  object-fit: contain;
+}
+
+/* ---------------- CONTENT ---------------- */
+.ve-content {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.ve-titulo {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--ve-gold);
+  letter-spacing: 1px;
+  margin: 0 0 48px 0;
+  line-height: 1.4;
+}
+
+/* ---------------- CUERPO ---------------- */
+.ve-cuerpo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------------- BARBEROS ---------------- */
+.ve-subtitulo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  font-size: 22px;
+  margin: 0 0 24px 0;
+}
+
+.ve-barberos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 16px;
+}
+
+.ve-barbero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--ve-radius);
+  padding: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.ve-barbero.seleccionado {
+  border-color: var(--ve-gold);
+}
+
+.ve-barbero-foto {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ve-gold-dark);
+}
+
+.ve-barbero-nombre {
+  font-size: 14px;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+/* ---------------- TARJETA DE OPINION ---------------- */
+.ve-card {
+  border: 1px solid var(--ve-gold);
+  border-radius: var(--ve-radius);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ve-card-foto {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ve-gold-dark);
+  margin-bottom: 12px;
+}
+
+.ve-card-nombre {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+
+.ve-card-subtitulo {
+  font-size: 15px;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+}
+
+.ve-estrellas {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.ve-estrella {
+  font-size: 28px;
+  color: #d9d9d9;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.ve-estrella.llena {
+  color: var(--ve-gold);
+}
+
+/* ---------------- TEXTAREA ---------------- */
+.ve-textarea-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.ve-textarea {
+  width: 100%;
+  min-height: 110px;
+  border: 1px solid var(--ve-gold);
+  border-radius: var(--ve-radius);
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+  color: #1a1a1a;
+}
+
+.ve-textarea::placeholder {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.ve-textarea:focus {
+  outline: none;
+  border-color: var(--ve-gold-dark);
+}
+
+.ve-textarea-hint {
+  position: absolute;
+  left: 16px;
+  top: 38px;
+  font-size: 13px;
+  color: var(--ve-text-muted);
+  pointer-events: none;
+}
+
+.ve-contador {
+  position: absolute;
+  right: 14px;
+  bottom: -22px;
+  font-size: 12px;
+  color: var(--ve-text-muted);
+}
+
+/* ---------------- BOTON ENVIAR ---------------- */
+.ve-btn-enviar {
+  width: 100%;
+  border: 1px solid var(--ve-gold);
+  background-color: #ffffff;
+  color: var(--ve-gold);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 14px;
+  cursor: pointer;
+  margin-top: 28px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ve-btn-enviar:hover {
+  background-color: var(--ve-gold);
+  color: #1a1a1a;
+}
+
+/* ---------------- COMENTARIO GENERAL ---------------- */
+.ve-comentario-general {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.ve-comentario-general span {
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px) {
+  .ve-cuerpo {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ve-barberos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ve-titulo {
+    font-size: 26px;
+  }
+}
