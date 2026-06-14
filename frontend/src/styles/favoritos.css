@@ -1,0 +1,285 @@
+:root {
+  --fav-bg-sidebar: #121212;
+  --fav-bg-main: #ffffff;
+  --fav-gold-primary: #e5be6b;
+  --fav-gold-border: #edd193;
+  --fav-text-white: #ffffff;
+  --fav-text-main: #000000;
+  --fav-text-muted: #555555; /* Un tono ligeramente más oscuro para mejorar el contraste */
+  --fav-focus-blue: #2196f3;
+  
+  /* Estados */
+  --fav-color-abierto: #10b981;
+  --fav-color-cerrado: #b91c1c;
+}
+
+.fav-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--fav-bg-main);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   1. SIDEBAR IZQUIERDO (MENU OSCURO ORIGINAL)
+   ========================================================================== */
+.fav-sidebar-left {
+  width: 250px; /* Un poco más ancho para equilibrar el nuevo tamaño general */
+  background-color: var(--fav-bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+  box-sizing: border-box;
+}
+
+.fav-brand {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.fav-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.fav-brand h2 {
+  font-size: 1.2rem; /* Letras de marca sutilmente más grandes */
+  letter-spacing: 1px;
+  color: var(--fav-text-white);
+  margin: 0;
+}
+
+.fav-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 15px;
+  flex: 1;
+}
+
+.fav-nav-btn {
+  background: none;
+  border: none;
+  color: #aaaaaa;
+  text-align: left;
+  padding: 14px 22px; /* Más área de click */
+  font-size: 1.05rem; /* Letras del menú principal más grandes */
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.fav-nav-btn:hover {
+  color: var(--fav-text-white);
+  background-color: #222222;
+}
+
+.fav-nav-btn.activo {
+  background-color: var(--fav-gold-primary);
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Perfil de Usuario en Sidebar */
+.fav-user-profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid #222222;
+  margin-top: auto;
+}
+
+.fav-avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  background-color: #f3d89d;
+  color: #000000;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-right: 12px;
+}
+
+.fav-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.fav-user-name {
+  color: var(--fav-text-white);
+  font-weight: 600;
+  font-size: 1.05rem; /* Nombre de usuario más legible */
+}
+
+.fav-user-role {
+  color: #888888;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   2. CONTENEDOR PRINCIPAL (ENTORNO BLANCO EXPENDIDO)
+   ========================================================================== */
+.fav-main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--fav-bg-main);
+}
+
+.fav-main-header {
+  background-color: #000000;
+  padding: 25px 40px;
+}
+
+.fav-main-header h1 {
+  font-size: 1.6rem; /* Título principal más grande */
+  font-weight: 600;
+  margin: 0;
+  color: var(--fav-text-white);
+}
+
+.fav-content-layout {
+  flex: 1;
+  padding: 40px;
+  background-color: var(--fav-bg-main);
+  display: flex;
+  justify-content: center;
+}
+
+.fav-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px; /* Aumentado de 900px a 1200px para extender los recuadros horizontalmente */
+}
+
+/* Tarjeta Base Favoritos Extendida */
+.fav-card-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--fav-bg-main);
+  border: 1.5px solid var(--fav-gold-border);
+  border-radius: 18px;
+  padding: 24px 30px; /* Mayor padding interno para dar aire al diseño expandido */
+  gap: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+/* Estado Seleccionado / Enfocado */
+.fav-card-item.seleccionada {
+  border: 2.5px solid var(--fav-focus-blue);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.12);
+}
+
+/* Imagen proporcional al nuevo tamaño */
+.fav-item-img {
+  width: 130px; /* Escalado de 100px a 130px */
+  height: 90px;  /* Escalado de 70px a 90px */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.fav-item-info {
+  flex: 1;
+}
+
+.fav-item-info h3 {
+  font-size: 1.3rem; /* Título de la barbería más grande */
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--fav-text-main);
+}
+
+.fav-item-address {
+  font-size: 1rem; /* Dirección más grande y legible */
+  color: var(--fav-text-muted);
+  margin: 0 0 10px 0;
+}
+
+/* Indicadores de Estado */
+.fav-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fav-status-dot {
+  width: 14px; /* Ligeramente más grandes */
+  height: 14px;
+  border-radius: 50%;
+}
+
+.fav-status-dot.abierto {
+  background-color: var(--fav-color-abierto);
+}
+
+.fav-status-dot.cerrado {
+  background-color: var(--fav-color-cerrado);
+}
+
+.fav-status-text {
+  font-size: 0.95rem; /* Texto de estado más grande */
+  font-weight: 600;
+  color: var(--fav-text-main);
+}
+
+/* Bloque derecho: Calificación y Botones */
+.fav-item-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px; /* Mayor separación vertical */
+}
+
+.fav-rating-number {
+  font-size: 1.8rem; /* Número de calificación más imponente */
+  font-weight: 700;
+  color: #c9a054;
+  line-height: 1;
+}
+
+.fav-buttons-group {
+  display: flex;
+  gap: 15px;
+}
+
+/* Estilos de botones de acción más robustos */
+.fav-btn-action {
+  border: none;
+  padding: 10px 24px; /* Mayor relleno interno */
+  border-radius: 20px;
+  font-size: 0.95rem; /* Texto de los botones más grande */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.fav-btn-gold {
+  background-color: var(--fav-gold-primary);
+  color: #000000;
+}
+
+.fav-btn-gold:hover {
+  background-color: #edd193;
+}
+
+.fav-btn-gray {
+  background-color: #e8e8ed;
+  color: var(--fav-text-main);
+}
+
+.fav-btn-gray:hover {
+  background-color: #dcdce1;
+}

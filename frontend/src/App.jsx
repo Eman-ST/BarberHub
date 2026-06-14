@@ -16,6 +16,8 @@ import RestablecerPassword from "./pages/restablecer-password";
 import RestablecerPasswordExito from "./pages/restablecer-password-exito";
 import OpinionBarberia from "./pages/opinion-barberia";
 import OpinionBarbero from "./pages/opinion-barbero";
+import HistorialCitas from "./pages/historial-citas";
+import Favoritos from "./pages/favoritos";
 
 export default function App() {
   return (
@@ -38,7 +40,9 @@ export default function App() {
         <Route path="/restablecer-password-exito" element={<RestablecerPasswordExito />} />
         <Route path="/opinion-barberia" element={<OpinionBarberia />} />
         <Route path="/opinion-barbero" element={<OpinionBarbero />} />
+        <Route path="/historial-citas" element={<HistorialCitas />} />
+        <Route path="/favoritos" element={<Favoritos />} />
       </Routes>
     </BrowserRouter>
   );
-}  
+}
