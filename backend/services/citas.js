@@ -82,9 +82,38 @@ function listarPorBarberia(barberiaId) {
   );
 }
 
+function cancelarCita(citaId, userId) {
+  const citas = listCitas();
+  const citaIndex = citas.findIndex((c) => c.id === citaId && c.userId === userId);
+  
+  if (citaIndex === -1) {
+    const error = new Error("Cita no encontrada o no pertenece al usuario");
+    error.status = 404;
+    throw error;
+  }
+  
+  citas[citaIndex].estado = "cancelada";
+  citas[citaIndex].canceladaEn = new Date().toISOString();
+  saveCitas(citas);
+  
+  return citas[citaIndex];
+}
+
+function obtenerPorId(citaId) {
+  const cita = listCitas().find((c) => c.id === citaId);
+  if (!cita) {
+    const error = new Error("Cita no encontrada");
+    error.status = 404;
+    throw error;
+  }
+  return cita;
+}
+
 module.exports = {
   crearCita,
   listarPorUsuario,
   listarPorBarberia,
   findConflicto,
+  cancelarCita,
+  obtenerPorId,
 };

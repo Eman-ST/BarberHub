@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import AppNavbar from "../components/app-navbar";
 import {
   getBarberiaById,
   generarSlots,
@@ -141,9 +140,8 @@ export default function AgendaLocal() {
 
   return (
     <div className="ag-page" style={{ backgroundColor: '#fcf8f3', minHeight: '100vh', paddingBottom: '40px', fontFamily: 'sans-serif' }}>
-      <AppNavbar />
-
       <main className="ag-main" style={{ maxWidth: '1280px', margin: '24px auto 0 auto', padding: '0 16px' }}>
+        <h1 style={{ fontFamily: 'serif', fontSize: '36px', fontWeight: 'bold', color: '#e8c46a', textAlign: 'center', marginBottom: '40px' }}>Agenda tu próximo corte</h1>
         <div className="ag-layout" style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', alignItems: 'flex-start' }}>
           
           {/* SECCIÓN 1: CALENDARIO */}

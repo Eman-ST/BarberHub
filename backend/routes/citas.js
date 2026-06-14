@@ -35,4 +35,22 @@ router.get("/barberia/:barberiaId", (req, res, next) => {
   }
 });
 
+router.get("/:id", requireAuth, (req, res, next) => {
+  try {
+    const cita = citas.obtenerPorId(req.params.id);
+    res.json({ ok: true, cita });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/:id", requireAuth, (req, res, next) => {
+  try {
+    const cita = citas.cancelarCita(req.params.id, req.user.id);
+    res.json({ ok: true, cita });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
