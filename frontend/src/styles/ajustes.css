@@ -1,0 +1,427 @@
+:root {
+  --aj-bg-sidebar: #121212;
+  --aj-bg-main: #ffffff;
+  --aj-gold-primary: #e5be6b;
+  --aj-text-white: #ffffff;
+  --aj-text-main: #000000;
+  --aj-text-muted: #7e7e82;
+  --aj-border-gray: #cccccc;
+  --aj-switch-on: #10b981;
+  --aj-switch-off: #e4e4e7;
+}
+
+.aj-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--aj-bg-main);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.aj-sidebar-left {
+  width: 250px;
+  background-color: var(--aj-bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+  box-sizing: border-box;
+}
+
+.aj-brand {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.aj-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.aj-brand h2 {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: var(--aj-text-white);
+  margin: 0;
+}
+
+.aj-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 15px;
+  flex: 1;
+}
+
+.aj-nav-btn {
+  background: none;
+  border: none;
+  color: #aaaaaa;
+  text-align: left;
+  padding: 14px 22px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.aj-nav-btn:hover {
+  color: var(--aj-text-white);
+  background-color: #222222;
+}
+
+.aj-nav-btn.activo {
+  background-color: var(--aj-gold-primary);
+  color: #000000;
+  font-weight: 700;
+}
+
+.aj-user-profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid #222222;
+  margin-top: auto;
+}
+
+.aj-avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  background-color: #f3d89d;
+  color: #000000;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-right: 12px;
+}
+
+.aj-user-name {
+  color: var(--aj-text-white);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.aj-user-role {
+  color: #888888;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+.aj-main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--aj-bg-main);
+}
+
+.aj-main-header {
+  background-color: #000000;
+  padding: 25px 40px;
+}
+
+.aj-main-header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--aj-text-white);
+}
+
+.aj-content-layout {
+  padding: 40px;
+  background-color: var(--aj-bg-main);
+  display: flex;
+  justify-content: center;
+}
+
+.aj-settings-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  gap: 50px;
+}
+
+.aj-column-left {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aj-profile-card {
+  border: 1.5px solid var(--aj-border-gray);
+  border-radius: 16px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.aj-profile-avatar {
+  width: 75px;
+  height: 75px;
+  background-color: #ebd193;
+  color: #000000;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.aj-profile-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: var(--aj-text-main);
+}
+
+.aj-profile-card p {
+  font-size: 0.95rem;
+  color: var(--aj-text-muted);
+  margin: 0 0 16px 0;
+}
+
+.aj-badge-status {
+  background-color: #e4e4e7;
+  color: #55555a;
+  padding: 5px 16px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.aj-change-photo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid var(--aj-border-gray);
+  background: none;
+  border-radius: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--aj-text-main);
+  transition: background 0.2s;
+}
+
+.aj-change-photo-btn:hover {
+  background-color: #fafafa;
+}
+
+.aj-icon-photo {
+  font-size: 1.4rem;
+}
+
+/* Caja de métricas convertida a grupo de botones clickeables */
+.aj-stats-grid {
+  display: flex;
+  border: 1.5px solid var(--aj-border-gray);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.aj-stat-item-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.aj-stat-item-btn:hover {
+  background-color: #fafafa;
+}
+
+.aj-stat-item-btn:not(:last-child) {
+  border-right: 1.5px solid var(--aj-border-gray);
+}
+
+.aj-stat-item-btn strong {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--aj-text-main);
+}
+
+.aj-stat-item-btn span {
+  font-size: 0.8rem;
+  color: var(--aj-text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.aj-column-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.aj-section-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.aj-section-group h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--aj-text-muted);
+  margin: 0 0 15px 0;
+}
+
+.aj-setting-row, .aj-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.aj-row-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--aj-text-main);
+}
+
+.aj-row-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.aj-icon-orange { background-color: #fff3e0; }
+.aj-icon-blue { background-color: #e3f2fd; }
+.aj-icon-green { background-color: #e8f5e9; }
+.aj-icon-purple { background-color: #f3e5f5; }
+.aj-icon-pink { background-color: #fce4ec; }
+.aj-icon-gray { background-color: #f5f5f5; }
+
+/* Contenedor y botón de edición inline de contraseña */
+.aj-password-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.aj-dots-password {
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--aj-text-main);
+}
+
+.aj-inline-edit-btn {
+  background: none;
+  border: none;
+  color: #10b981;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.aj-inline-edit-btn:hover {
+  text-decoration: underline;
+}
+
+.aj-info-value {
+  font-size: 1.05rem;
+  color: var(--aj-text-muted);
+  font-weight: 500;
+}
+
+.aj-delete-account-zone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.aj-delete-text {
+  font-size: 1.05rem;
+  color: var(--aj-text-muted);
+  font-weight: 600;
+}
+
+.aj-delete-btn {
+  background-color: #b90043;
+  color: #ffffff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.aj-delete-btn:hover {
+  opacity: 0.9;
+}
+
+/* Switch (Toggle Checkbox nativo) */
+.aj-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.aj-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.aj-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--aj-switch-off);
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.aj-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .aj-slider {
+  background-color: var(--aj-switch-on);
+}
+
+input:checked + .aj-slider:before {
+  transform: translateX(24px);
+}
