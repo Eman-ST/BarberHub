@@ -20,6 +20,7 @@ import HistorialCitas from "./pages/historial-citas";
 import Favoritos from "./pages/favoritos";
 import Notificaciones from "./pages/notificaciones";
 import Ajustes from "./pages/ajustes";
+import OpinionBarberiaGeneral from "./pages/opinion-barberia-general";
 
 export default function App() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/notificaciones" element={<Notificaciones />} />
         <Route path="/ajustes" element={<Ajustes />} />
+        <Route path="/opinion-barberia-general" element={<OpinionBarberiaGeneral />} />
       </Routes>
     </BrowserRouter>
   );
