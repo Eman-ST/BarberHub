@@ -20,7 +20,7 @@ export default function OpinionBarbero() {
     <div className="ve-page">
       {/* Header */}
       <header className="ve-header">
-        <img src="/barberhublogo.jpg" alt="Barber Hub" className="ve-logo" />
+        <img src="/logo.png" alt="Barber Hub" className="ve-logo" />
       </header>
 
       <div className="ve-content">
@@ -95,8 +95,11 @@ export default function OpinionBarbero() {
           </div>
         </div>
 
-        <div className="ve-comentario-general">
-          <span>Hacer comentario general a la barbería</span>
+        <div className="ve-acciones-footer">
+          <button className="ve-btn-regresar">Regresar</button>
+          <button className="ve-btn-comentario-general">
+            Hacer comentario general a la barbería
+          </button>
         </div>
       </div>
     </div>

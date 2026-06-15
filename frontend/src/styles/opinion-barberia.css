@@ -25,7 +25,7 @@
 }
 
 .bp-logo {
-  height: 48px;
+  height: 80px;
   object-fit: contain;
 }
 
@@ -262,8 +262,8 @@
 }
 
 .bp-btn-opinion {
-  background-color: #1a1a1a;
-  color: #ffffff;
+ background-color: var(--bp-gold);
+  color: #000000;
   display: flex;
   align-items: center;
   gap: 10px;

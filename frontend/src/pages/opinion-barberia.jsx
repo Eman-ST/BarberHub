@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/opinion-barberia.css";
-<img src="/barberhublogo.jpg" alt="Barber Hub" className="bp-logo" />
+<img src="/logo.png" alt="Barber Hub" className="bp-logo" />
 
 const opiniones = [
   {
@@ -49,7 +49,7 @@ export default function OpinionBarberia() {
     <div className="bp-page">
       {/* Header */}
       <header className="bp-header">
-      <img src="/barberhublogo.jpg" alt="Barber Hub" className="bp-logo" />
+      <img src="/logo.png" alt="Barber Hub" className="bp-logo" />
       </header>
 
       <div className="bp-content">
@@ -118,7 +118,7 @@ export default function OpinionBarberia() {
           </button>
 
           <button className="bp-orden-btn">
-            Más recientes <span className="bp-chevron">&gt;</span>
+            Más recientes <span className="bp-chevron"></span>
           </button>
         </div>
 
