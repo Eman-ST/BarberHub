@@ -84,81 +84,82 @@ export default function DatosReserva() {
     <div className="dr-page">
       <PageNavbar />
       <div className="dr-body">
-      <div className="dr-card">
-        <div className="dr-icon-wrap" aria-hidden>
-          <IconCircleCheck size={36} stroke={2} color="#fff" />
-        </div>
-
-        <h1 className="dr-title">Datos de Reserva</h1>
-        <p className="dr-subtitle">
-          No necesitas cuenta. Completa para agendar en el local
-        </p>
-
-        <form className="dr-form" onSubmit={confirmar}>
-          <input
-            className="dr-input"
-            type="text"
-            placeholder="Tu Nombre Completo"
-            value={nombre}
-            onChange={(e) => {
-              setNombre(e.target.value);
-              setError("");
-            }}
-            required
-          />
-          <input
-            className="dr-input"
-            type="tel"
-            placeholder="Teléfono/WhatsApp"
-            value={telefono}
-            onChange={(e) => {
-              setTelefono(e.target.value);
-              setError("");
-            }}
-            required
-          />
-
-          <div className="dr-summary">
-            <div className="dr-summary-row">
-              <span className="dr-label">ESTABLECIMIENTO</span>
-              <span className="dr-value">{reserva.establecimiento}</span>
-            </div>
-            <div className="dr-summary-row">
-              <span className="dr-label">HORARIO</span>
-              <span className="dr-value">{horarioTexto}</span>
-            </div>
-            <div className="dr-summary-row">
-              <span className="dr-label">SERVICIO</span>
-              <span className="dr-value">{reserva.servicio}</span>
-            </div>
-            <div className="dr-summary-row">
-              <span className="dr-label">TOTAL ESTIMADO</span>
-              <span className="dr-value">
-                ${reserva.precio} {reserva.moneda}
-              </span>
-            </div>
+        <div className="dr-card">
+          <div className="dr-icon-wrap" aria-hidden>
+            {/* Redimensionado a 48 para que luzca imponente como el check de anticipo */}
+            <IconCircleCheck size={48} stroke={2} color="#fff" />
           </div>
+
+          <h1 className="dr-title">Datos de Reserva</h1>
+          <p className="dr-subtitle">
+            No necesitas cuenta. Completa los datos para agendar en el local.
+          </p>
+
+          <form className="dr-form" onSubmit={confirmar}>
+            <input
+              className="dr-input"
+              type="text"
+              placeholder="Tu Nombre Completo"
+              value={nombre}
+              onChange={(e) => {
+                setNombre(e.target.value);
+                setError("");
+              }}
+              required
+            />
+            <input
+              className="dr-input"
+              type="tel"
+              placeholder="Teléfono / WhatsApp"
+              value={telefono}
+              onChange={(e) => {
+                setTelefono(e.target.value);
+                setError("");
+              }}
+              required
+            />
+
+            <div className="dr-summary">
+              <div className="dr-summary-row">
+                <span className="dr-label">ESTABLECIMIENTO</span>
+                <span className="dr-value">{reserva.establecimiento}</span>
+              </div>
+              <div className="dr-summary-row">
+                <span className="dr-label">HORARIO</span>
+                <span className="dr-value">{horarioTexto}</span>
+              </div>
+              <div className="dr-summary-row">
+                <span className="dr-label">SERVICIO</span>
+                <span className="dr-value">{reserva.servicio}</span>
+              </div>
+              <div className="dr-summary-row highlight">
+                <span className="dr-label">TOTAL ESTIMADO</span>
+                <span className="dr-value price">
+                  ${reserva.precio} {reserva.moneda}
+                </span>
+              </div>
+            </div>
 
           {error && <p className="dr-error">{error}</p>}
 
-          <div className="dr-actions">
-            <button
-              type="button"
-              className="dr-btn-cancel"
-              onClick={() => navigate("/agenda-local")}
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              className="dr-btn-confirm"
-              disabled={enviando}
-            >
-              {enviando ? "Confirmando..." : "Confirmar Cita"}
-            </button>
-          </div>
-        </form>
-      </div>
+            <div className="dr-actions">
+              <button
+                type="button"
+                className="dr-btn-cancel"
+                onClick={() => navigate("/agenda-local")}
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                className="dr-btn-confirm"
+                disabled={enviando}
+              >
+                {enviando ? "Confirmando..." : "Confirmar Cita"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

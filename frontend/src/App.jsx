@@ -22,6 +22,7 @@ import Notificaciones from "./pages/notificaciones";
 import Ajustes from "./pages/ajustes";
 import OpinionBarberiaGeneral from "./pages/opinion-barberia-general";
 import ComentarioEnviado from "./pages/comentario-enviado";
+import PagoAnticipo from "./pages/pago-anticipo";
 
 export default function App() {
   return (
@@ -50,6 +51,7 @@ export default function App() {
         <Route path="/ajustes" element={<Ajustes />} />
         <Route path="/opinion-barberia-general" element={<OpinionBarberiaGeneral />} />
         <Route path="/comentario-enviado" element={<ComentarioEnviado />} />
+        <Route path="/pago-anticipo" element={<PagoAnticipo />} />
       </Routes>
     </BrowserRouter>
   );
