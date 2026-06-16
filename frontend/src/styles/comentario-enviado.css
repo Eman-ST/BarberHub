@@ -1,0 +1,62 @@
+
+.ce-page {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.ce-card {
+  background-color: #0e0e0e;
+  border: 1px solid #c9a23f;
+  border-radius: 14px;
+  max-width: 620px;
+  width: 100%;
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.ce-logo {
+  width: 200px;
+  object-fit: contain;
+}
+
+.ce-titulo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #f0c75e;
+  margin: 0;
+}
+
+.ce-texto {
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.ce-btn-aceptar {
+  border: 1px solid #f0c75e;
+  background-color: transparent;
+  color: #f0c75e;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  border-radius: 999px;
+  padding: 14px 48px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-top: 8px;
+}
+
+.ce-btn-aceptar:hover {
+  background-color: #f0c75e;
+  color: #0e0e0e;
+}

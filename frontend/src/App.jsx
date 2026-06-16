@@ -21,6 +21,7 @@ import Favoritos from "./pages/favoritos";
 import Notificaciones from "./pages/notificaciones";
 import Ajustes from "./pages/ajustes";
 import OpinionBarberiaGeneral from "./pages/opinion-barberia-general";
+import ComentarioEnviado from "./pages/comentario-enviado";
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
         <Route path="/notificaciones" element={<Notificaciones />} />
         <Route path="/ajustes" element={<Ajustes />} />
         <Route path="/opinion-barberia-general" element={<OpinionBarberiaGeneral />} />
+        <Route path="/comentario-enviado" element={<ComentarioEnviado />} />
       </Routes>
     </BrowserRouter>
   );
