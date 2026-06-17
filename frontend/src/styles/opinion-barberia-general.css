@@ -193,6 +193,8 @@
 .obg-footer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 32px;
   margin-top: 32px;
 }
 
@@ -208,6 +210,22 @@
 }
 
 .obg-btn-regresar:hover {
+  color: var(--obg-gold-dark);
+  border-color: var(--obg-gold-dark);
+}
+
+.obg-btn-comentario-barbero {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 4px;
+}
+
+.obg-btn-comentario-barbero:hover {
   color: var(--obg-gold-dark);
   border-color: var(--obg-gold-dark);
 }

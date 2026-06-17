@@ -1,13 +1,14 @@
 
 :root {
-  --obg-gold: #f0c75e;
-  --obg-gold-dark: #d8b24a;
-  --obg-border: #f0c75e;
-  --obg-text-muted: #9a9a9a;
-  --obg-radius: 12px;
+  --bp-gold: #f0c75e;
+  --bp-gold-dark: #d8b24a;
+  --bp-border: #d9d9d9;
+  --bp-text-muted: #9a9a9a;
+  --bp-green: #2ecc71;
+  --bp-radius: 8px;
 }
 
-.obg-page {
+.bp-page {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background-color: #ffffff;
   color: #1a1a1a;
@@ -15,7 +16,7 @@
 }
 
 /* ---------------- HEADER ---------------- */
-.obg-header {
+.bp-header {
   background-color: #000000;
   height: 72px;
   display: flex;
@@ -23,223 +24,267 @@
   padding: 0 24px;
 }
 
-.obg-logo {
+.bp-logo {
   height: 80px;
   object-fit: contain;
 }
 
 /* ---------------- CONTENT ---------------- */
-.obg-content {
-  max-width: 900px;
+.bp-content {
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 40px 24px 60px;
+  padding: 24px 24px 40px;
 }
 
-.obg-titulo {
-  text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 800;
+/* ---------------- TITULO ---------------- */
+.bp-titulo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.bp-nombre {
   font-size: 36px;
-  color: var(--obg-gold);
-  letter-spacing: 1px;
-  margin: 0 0 40px 0;
-  line-height: 1.4;
-}
-
-/* ---------------- TARJETA ---------------- */
-.obg-card {
-  border: 1px solid var(--obg-gold);
-  border-radius: var(--obg-radius);
-  padding: 40px 48px;
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 40px;
-  align-items: center;
-}
-
-/* ---------------- LOGO BARBERÍA ---------------- */
-.obg-barberia-logo-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.obg-barberia-logo {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-}
-
-/* ---------------- FORMULARIO ---------------- */
-.obg-formulario {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.obg-linea-top {
-  width: 100%;
-  height: 2px;
-  background-color: #1a1a1a;
-  margin-bottom: 20px;
-}
-
-.obg-nombre {
-  font-size: 26px;
   font-weight: 800;
   margin: 0 0 6px 0;
 }
 
-.obg-subtitulo {
+.bp-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.bp-opiniones {
   font-size: 15px;
+  color: #333;
+}
+
+.bp-direccion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+.bp-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--bp-green);
+  color: var(--bp-green);
+  font-size: 11px;
+}
+
+/* ---------------- TABS ---------------- */
+.bp-tabs {
+  display: flex;
+  border: 1px solid var(--bp-gold);
+  border-radius: 6px;
+  overflow: hidden;
+  height: 40px;
+}
+
+.bp-tab {
+  border: none;
+  background-color: #ffffff;
+  padding: 0 18px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
   color: #1a1a1a;
-  margin: 0 0 14px 0;
+}
+
+.bp-tab.activo {
+  background-color: var(--bp-gold);
+}
+
+.bp-tab.inactivo {
+  background-color: #ffffff;
+}
+
+/* ---------------- FILTROS ---------------- */
+.bp-filtros {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--bp-border);
+  border-radius: var(--bp-radius);
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.bp-filtros-label {
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 4px;
+}
+
+.bp-filtro-btn {
+  border: 1px solid var(--bp-border);
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+.bp-filtro-btn.activo {
+  border-color: var(--bp-gold);
+}
+
+.bp-filtro-estrellas {
+  border: 1px solid var(--bp-border);
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.bp-filtro-estrellas.activo {
+  border-color: var(--bp-gold);
+  background-color: #fdf6e3;
+}
+
+.bp-orden-btn {
+  margin-left: auto;
+  border: 1px solid var(--bp-border);
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bp-chevron {
+  font-weight: 400;
 }
 
 /* ---------------- ESTRELLAS ---------------- */
-.obg-estrellas {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-
-.obg-estrella {
-  font-size: 28px;
+.bp-estrellas .estrella {
   color: #d9d9d9;
-  cursor: pointer;
-  transition: color 0.15s ease;
+  font-size: 22px;
 }
 
-.obg-estrella.llena {
-  color: var(--obg-gold);
+.bp-estrellas .estrella.llena {
+  color: var(--bp-gold);
 }
 
-/* ---------------- TEXTAREA ---------------- */
-.obg-textarea-wrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 28px;
-}
-
-.obg-textarea {
-  width: 100%;
-  min-height: 120px;
-  border: 1px solid var(--obg-gold);
-  border-radius: var(--obg-radius);
-  padding: 14px 16px;
+.bp-estrellas.small .estrella {
   font-size: 14px;
-  font-family: inherit;
-  resize: vertical;
-  box-sizing: border-box;
-  color: #1a1a1a;
 }
 
-.obg-textarea::placeholder {
-  color: #1a1a1a;
-  font-weight: 600;
+/* ---------------- OPINIONES ---------------- */
+.bp-opiniones-lista {
+  display: flex;
+  flex-direction: column;
 }
 
-.obg-textarea:focus {
-  outline: none;
-  border-color: var(--obg-gold-dark);
+.bp-opinion {
+  display: flex;
+  gap: 16px;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--bp-border);
 }
 
-.obg-textarea-hint {
-  position: absolute;
-  left: 16px;
-  top: 40px;
-  font-size: 13px;
-  color: var(--obg-text-muted);
-  pointer-events: none;
-  text-align: left;
-  line-height: 1.5;
+.bp-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.obg-contador {
-  position: absolute;
-  right: 14px;
-  bottom: -22px;
-  font-size: 12px;
-  color: var(--obg-text-muted);
+.bp-opinion-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-/* ---------------- BOTÓN ENVIAR ---------------- */
-.obg-btn-enviar {
-  width: 100%;
-  border: 1px solid var(--obg-gold);
-  background-color: #ffffff;
-  color: var(--obg-gold);
+.bp-opinion-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bp-opinion-nombre {
   font-weight: 700;
   font-size: 15px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.obg-btn-enviar:hover {
-  background-color: var(--obg-gold);
-  color: #1a1a1a;
+.bp-opinion-tiempo {
+  font-size: 13px;
+  color: var(--bp-text-muted);
 }
 
-/* ---------------- FOOTER ---------------- */
-.obg-footer {
+.bp-opinion-texto {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ---------------- ACCIONES ---------------- */
+.bp-acciones {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.bp-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.bp-btn-regresar {
+  background-color: var(--bp-gold);
+  color: #1a1a1a;
+}
+
+.bp-btn-opinion {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  display: flex;
   align-items: center;
-  gap: 32px;
-  margin-top: 32px;
+  gap: 10px;
 }
 
-.obg-btn-regresar {
-  background: transparent;
-  border: none;
+.bp-icono-chat {
   font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #1a1a1a;
-  border-bottom: 2px solid #1a1a1a;
-  padding-bottom: 4px;
-}
-
-.obg-btn-regresar:hover {
-  color: var(--obg-gold-dark);
-  border-color: var(--obg-gold-dark);
-}
-
-.obg-btn-comentario-barbero {
-  background: transparent;
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #1a1a1a;
-  border-bottom: 2px solid #1a1a1a;
-  padding-bottom: 4px;
-}
-
-.obg-btn-comentario-barbero:hover {
-  color: var(--obg-gold-dark);
-  border-color: var(--obg-gold-dark);
 }
 
 /* ---------------- RESPONSIVE ---------------- */
-@media (max-width: 700px) {
-  .obg-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 28px 20px;
+@media (max-width: 720px) {
+  .bp-titulo-row {
+    flex-direction: column;
   }
 
-  .obg-barberia-logo {
-    width: 140px;
-    height: 140px;
+  .bp-orden-btn {
+    margin-left: 0;
+  }
+
+  .bp-acciones {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

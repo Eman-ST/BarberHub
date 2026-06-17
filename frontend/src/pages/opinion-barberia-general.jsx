@@ -25,7 +25,10 @@ export default function OpinionBarberiaGeneral() {
           {/* Logo de la barbería (botón) */}
           <button className="obg-barberia-logo-btn">
             <img
-              src="/logo-ejemplo.png"alt="Logo barbería" className="obg-barberia-logo" />
+              src="/logo-ejemplo.png"
+              alt="Logo barbería"
+              className="obg-barberia-logo"
+            />
           </button>
 
           {/* Formulario */}
