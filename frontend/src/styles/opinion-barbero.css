@@ -218,14 +218,14 @@
 }
 
 /* ---------------- FOOTER DE ACCIONES ---------------- */
-/* ---------------- FOOTER DE ACCIONES ---------------- */
 .ve-acciones-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;   /* antes: flex-end */
   align-items: center;
   gap: 32px;
   margin-top: 48px;
 }
+
 
 .ve-btn-regresar {
   background: transparent;

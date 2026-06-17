@@ -97,9 +97,6 @@ export default function OpinionBarbero() {
 
         <div className="ve-acciones-footer">
           <button className="ve-btn-regresar">Regresar</button>
-          <button className="ve-btn-comentario-general">
-            Hacer comentario general a la barbería
-          </button>
         </div>
       </div>
     </div>

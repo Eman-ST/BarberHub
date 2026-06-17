@@ -25,7 +25,7 @@ export default function OpinionBarberiaGeneral() {
           {/* Logo de la barbería (botón) */}
           <button className="obg-barberia-logo-btn">
             <img
-              src="/logo-ejemplo.png" alt="Logo barbería" className="obg-barberia-logo" />
+              src="/logo-ejemplo.png"alt="Logo barbería" className="obg-barberia-logo" />
           </button>
 
           {/* Formulario */}
@@ -74,6 +74,9 @@ export default function OpinionBarberiaGeneral() {
         {/* Botón regresar */}
         <div className="obg-footer">
           <button className="obg-btn-regresar">Regresar</button>
+          <button className="obg-btn-comentario-barbero">
+            Hacer comentario general al barbero
+          </button>
         </div>
       </div>
     </div>
