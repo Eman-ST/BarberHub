@@ -6,7 +6,7 @@ import VerificarCorreo from "./pages/verificar-correo";
 import AgendaLocal from "./pages/agenda-local";
 import DatosReserva from "./pages/datos-reserva";
 import CitaConfirmada from "./pages/cita-confirmada";
-import MisCitas from "./pages/mis-citas";
+import MisCitas from "./pages/MisCitas";
 import Explorar from "./pages/explorar";
 import BarberiaPerfil from "./pages/barberia-perfil";
 import MasServicios from "./pages/mas-servicios";
@@ -16,6 +16,9 @@ import RecuperarPasswordEnviado from "./pages/recuperar-password-enviado";
 import RestablecerPassword from "./pages/restablecer-password";
 import RestablecerPasswordExito from "./pages/restablecer-password-exito";
 import SidebarLayout from "./components/sidebar-layout";
+import OpinionBarberia from "./pages/opinion-barberia";
+import OpinionBarbero from "./pages/opinion-barbero";
+
 
 function AuthLayout({ children }) {
   return <SidebarLayout>{children}</SidebarLayout>;
@@ -100,7 +103,25 @@ export default function App() {
             </AuthLayout>
           }
         />
+        <Route
+          path="/opinion-barberia"
+          element={
+            <AuthLayout>
+              <OpinionBarberia />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/opinion-barbero"
+          element={
+            <AuthLayout>
+              <OpinionBarbero />
+            </AuthLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
+
+    
   );
-}
+}  

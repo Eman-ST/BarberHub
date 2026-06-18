@@ -112,13 +112,13 @@ export default function SidebarLayout({ children }) {
 
       {/* Main content area */}
       <div className="sidebar-main-wrapper">
-        {/* Global Header */}
+        {/* Global Header Limpio (Sin texto duplicado) */}
         <header className="sidebar-global-header">
-          <div className="sidebar-header-logo">
-            <span className="sidebar-logo-text">BARBER HUB</span>
+          <div className="sidebar-header-left-space">
+            {/* Espacio intencional para empujar el input a la derecha */}
           </div>
+          
           <div className="sidebar-header-search">
-            <Search className="sidebar-search-icon" />
             <input
               type="text"
               placeholder="Buscar barberías"
@@ -126,6 +126,7 @@ export default function SidebarLayout({ children }) {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="sidebar-search-input"
             />
+            <Search className="sidebar-search-icon" />
           </div>
         </header>
 
