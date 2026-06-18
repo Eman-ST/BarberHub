@@ -1,26 +1,26 @@
-/* ── VARIABLES ── */
+/* Variables globales */
 :root {
-  --black: #111111;
-  --white: #ffffff;
-  --gold: #c9a227;
-  --gold-hover: #b8911e;
-  --accent-lime: #b5c94e;
-  --gray: #4a4a4a;
-  --lgray: #9a9a9a;
-  --border: #d8c8b0;
-  --font: "Inter", system-ui, sans-serif;
+  --negro: #111111;
+  --blanco: #ffffff;
+  --dorado: #c9a227;
+  --dorado-hover: #b8911e;
+  --acento-lima: #b5c94e;
+  --gris: #4a4a4a;
+  --gris-claro: #9a9a9a;
+  --borde: #d8c8b0;
+  --fuente: "Inter", system-ui, sans-serif;
 }
 
-/* ── LAYOUT ── */
-.login-wrapper {
+/* Layout general  */
+.pagina-login {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
-  font-family: var(--font);
+  font-family: var(--fuente);
 }
 
-/* ── COLUMNA IZQUIERDA ── */
-.login-left {
+/* Columna izquierda */
+.login-columna-izquierda {
   position: relative;
   background-color: #e8e4df;
   background-image: url("/barberia.jpg");
@@ -30,7 +30,7 @@
   flex-direction: column;
 }
 
-.login-overlay {
+.overlay-login {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -43,7 +43,7 @@
   z-index: 0;
 }
 
-.login-left-content {
+.contenido-izquierdo {
   position: relative;
   z-index: 1;
   display: flex;
@@ -53,14 +53,14 @@
   padding: 36px 44px 28px;
 }
 
-.login-logo {
+.logo-login {
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
 }
 
-.login-logo-img {
+.logo-login-img {
   width: 96px;
   height: 96px;
   border-radius: 50%;
@@ -68,67 +68,67 @@
   display: block;
 }
 
-.login-hero-text {
+.texto-hero-login {
   margin-top: auto;
   margin-bottom: 28px;
 }
 
-.login-hero-text h2 {
+.texto-hero-login h2 {
   font-size: clamp(26px, 2.8vw, 38px);
   font-weight: 800;
-  color: var(--black);
+  color: var(--negro);
   line-height: 1.2;
   margin-bottom: 14px;
   max-width: 420px;
 }
 
-.login-accent {
-  color: var(--accent-lime);
+.acento-login {
+  color: var(--acento-lima);
 }
 
-.login-hero-text p {
+.texto-hero-login p {
   font-size: 15px;
-  color: var(--gray);
+  color: var(--gris);
   line-height: 1.65;
   max-width: 400px;
 }
 
-.login-left-footer {
+.footer-izquierdo {
   font-size: 13px;
   color: rgba(0, 0, 0, 0.55);
   padding-top: 18px;
 }
 
-/* ── COLUMNA DERECHA ── */
-.login-right {
-  background: var(--white);
+/* Columna derecha */
+.login-columna-derecha {
+  background: var(--blanco);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 48px 40px;
 }
 
-.login-form-wrap {
+.formulario-login {
   width: 100%;
   max-width: 400px;
 }
 
-.login-title {
+.titulo-login {
   font-size: 34px;
   font-weight: 800;
-  color: var(--black);
+  color: var(--negro);
   text-align: center;
   margin-bottom: 8px;
 }
 
-.login-subtitle {
+.subtitulo-login {
   font-size: 15px;
-  color: var(--lgray);
+  color: var(--gris-claro);
   text-align: center;
   margin-bottom: 36px;
 }
 
-.login-error {
+.error-login {
   font-size: 14px;
   color: #a12b2b;
   background: #fdf0f0;
@@ -139,7 +139,7 @@
   margin-bottom: 12px;
 }
 
-.login-success {
+.mensaje-exito-login {
   font-size: 14px;
   color: #2d7a4a;
   background: #edf7f0;
@@ -151,65 +151,65 @@
   line-height: 1.45;
 }
 
-.login-form {
+.form-login {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.login-input {
+.input-login {
   width: 100%;
   padding: 14px 18px;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid var(--borde);
   border-radius: 10px;
-  font-family: var(--font);
+  font-family: var(--fuente);
   font-size: 15px;
-  color: var(--black);
-  background: var(--white);
+  color: var(--negro);
+  background: var(--blanco);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.login-input::placeholder {
+.input-login::placeholder {
   color: #b5b5b5;
 }
 
-.login-input:focus {
-  border-color: var(--gold);
+.input-login:focus {
+  border-color: var(--dorado);
   box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.12);
 }
 
-.login-forgot {
+.recuperar-login {
   display: flex;
   justify-content: flex-end;
   margin-top: -4px;
 }
 
-.login-link-gold {
+.link-dorado-login {
   background: none;
   border: none;
   cursor: pointer;
-  font-family: var(--font);
+  font-family: var(--fuente);
   font-size: 14px;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--dorado);
   padding: 0;
   transition: color 0.2s;
 }
 
-.login-link-gold:hover {
-  color: var(--gold-hover);
+.link-dorado-login:hover {
+  color: var(--dorado-hover);
   text-decoration: underline;
 }
 
-.login-btn-submit {
+.btn-submit-login {
   width: 100%;
   padding: 15px;
   border-radius: 10px;
   border: none;
   background: #000;
-  color: var(--gold);
-  font-family: var(--font);
+  color: var(--dorado);
+  font-family: var(--fuente);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -218,42 +218,43 @@
   margin-top: 6px;
 }
 
-.login-btn-submit:hover {
+.btn-submit-login:hover {
   background: #222;
   transform: translateY(-1px);
 }
 
-.login-btn-submit:disabled {
+.btn-submit-login:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
 }
 
-.login-register-row {
+.registro-login {
   text-align: center;
   font-size: 14px;
-  color: var(--lgray);
+  color: var(--gris-claro);
   margin-top: 24px;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .login-wrapper {
+  .pagina-login {
     grid-template-columns: 1fr;
   }
 
-  .login-left {
+  .login-columna-izquierda {
     min-height: 280px;
   }
 
-  .login-left-content {
+  .contenido-izquierdo {
     min-height: 280px;
   }
 
-  .login-hero-text {
+  .texto-hero-login {
     margin-top: 32px;
   }
 
-  .login-right {
+  .login-columna-derecha {
     padding: 40px 24px;
   }
 }

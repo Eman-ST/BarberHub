@@ -12,6 +12,7 @@ import AppNavbar from "../components/app-navbar";
 import { getBarberiaById } from "../data/barberias";
 import "../styles/mas-servicios.css";
 
+/* Diccionario de iconos de servicio */
 const ICONOS_SERVICIO = {
   moustache: IconMoustache,
   razor: IconRazor,
@@ -19,9 +20,10 @@ const ICONOS_SERVICIO = {
   scissors: IconScissors,
 };
 
+/* Componente de estrellas */
 function Estrellas({ count = 5 }) {
   return (
-    <span className="ms-stars" aria-hidden>
+    <span className="estrellas" aria-hidden>
       {Array.from({ length: count }).map((_, i) => (
         <IconStarFilled key={i} size={16} />
       ))}
@@ -29,39 +31,43 @@ function Estrellas({ count = 5 }) {
   );
 }
 
+/* Componente principal: Más Servicios  */
 export default function MasServicios() {
   const navigate = useNavigate();
   const { id } = useParams();
   const barberia = getBarberiaById(id);
 
+  // Servicios extendidos o normales
   const servicios = barberia.serviciosExtendidos ?? barberia.servicios;
   const mitad = Math.ceil(servicios.length / 2);
   const colA = servicios.slice(0, mitad);
   const colB = servicios.slice(mitad);
 
   return (
-    <div className="ms-page">
+    <div className="pagina-servicios">
+      {/* Navbar superior */}
       <AppNavbar />
 
-      <main className="ms-main">
-        <section className="ms-hero">
-          <div className="ms-hero-left">
-            <img className="ms-hero-logo" src={barberia.imagen} alt="" />
+      <main className="contenido-servicios">
+        {/* Sección hero con datos de barbería */}
+        <section className="hero-servicios">
+          <div className="hero-izquierda">
+            <img className="logo-barberia" src={barberia.imagen} alt="" />
             <div>
-              <h1 className="ms-hero-title">{barberia.nombre}</h1>
-              <div className="ms-hero-rating">
+              <h1 className="titulo-barberia">{barberia.nombre}</h1>
+              <div className="rating-barberia">
                 <Estrellas />
                 <span>
                   {barberia.rating.toFixed(1)} ({barberia.totalOpiniones} opiniones)
                 </span>
               </div>
-              <p className="ms-hero-address">
+              <p className="direccion-barberia">
                 <IconMapPin size={17} />
                 {barberia.direccion}
               </p>
-              <p className="ms-hero-status">
+              <p className="estado-barberia">
                 <span
-                  className={`ms-status-dot ${barberia.abierto ? "ms-status-dot--open" : ""}`}
+                  className={`estado-dot ${barberia.abierto ? "estado-dot--abierto" : ""}`}
                 />
                 {barberia.abierto ? "Abierto ahora" : "Cerrado"}
               </p>
@@ -69,45 +75,49 @@ export default function MasServicios() {
           </div>
         </section>
 
-        <section className="ms-services">
+        {/* Sección de servicios */}
+        <section className="lista-servicios">
           <h2>Servicios disponibles</h2>
 
-          <div className="ms-services-grid">
-            <ul className="ms-services-col">
+          <div className="grid-servicios">
+            {/* Columna A */}
+            <ul className="columna-servicios">
               {colA.map((s) => {
                 const Icon = ICONOS_SERVICIO[s.icono] ?? IconScissors;
                 return (
-                  <li key={s.id} className="ms-service-item">
-                    <span className="ms-service-left">
+                  <li key={s.id} className="item-servicio">
+                    <span className="servicio-izquierda">
                       <Icon size={22} stroke={1.7} />
                       {s.nombre}
                     </span>
-                    <span className="ms-service-price">${s.precio}</span>
+                    <span className="precio-servicio">${s.precio}</span>
                   </li>
                 );
               })}
             </ul>
 
-            <ul className="ms-services-col">
+            {/* Columna B */}
+            <ul className="columna-servicios">
               {colB.map((s) => {
                 const Icon = ICONOS_SERVICIO[s.icono] ?? IconScissors;
                 return (
-                  <li key={s.id} className="ms-service-item">
-                    <span className="ms-service-left">
+                  <li key={s.id} className="item-servicio">
+                    <span className="servicio-izquierda">
                       <Icon size={22} stroke={1.7} />
                       {s.nombre}
                     </span>
-                    <span className="ms-service-price">${s.precio}</span>
+                    <span className="precio-servicio">${s.precio}</span>
                   </li>
                 );
               })}
             </ul>
           </div>
 
-          <div className="ms-actions">
+          {/* Botón regresar */}
+          <div className="acciones-servicios">
             <button
               type="button"
-              className="ms-btn-back"
+              className="boton-regresar"
               onClick={() => navigate(`/barberia/${barberia.id}`)}
             >
               <IconChevronLeft size={18} />

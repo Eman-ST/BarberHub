@@ -1,47 +1,50 @@
 import React, { useState } from "react";
 import "../styles/opinion-barberia-general.css";
 
+/* Componente principal: Opinión Barbería General*/
 export default function OpinionBarberiaGeneral() {
-  const [rating, setRating] = useState(5);
-  const [comentario, setComentario] = useState("");
-  const maxCaracteres = 1000;
+  const [rating, setRating] = useState(5); // Estado para la calificación (estrellas)
+  const [comentario, setComentario] = useState(""); // Estado para el texto del comentario
+  const maxCaracteres = 1000; // Límite de caracteres del comentario
 
   return (
-    <div className="obg-page">
-      {/* Header */}
-      <header className="obg-header">
-        <img src="/logo.png" alt="Barber Hub" className="obg-logo" />
+    <div className="pagina-opinion">
+      {/* Encabezado con logo */}
+      <header className="encabezado">
+        <img src="/logo.png" alt="Barber Hub" className="logo-barberhub" />
       </header>
 
-      <div className="obg-content">
-        <h1 className="obg-titulo">
+      <div className="contenido">
+        {/* Título principal */}
+        <h1 className="titulo-principal">
           Valora tu experiencia
           <br />
           con nosotros
         </h1>
 
-        {/* Tarjeta principal */}
-        <div className="obg-card">
-          {/* Logo de la barbería (botón) */}
-          <button className="obg-barberia-logo-btn">
+        {/* Tarjeta principal con formulario */}
+        <div className="tarjeta-opinion">
+          {/* Logo de la barbería como botón */}
+          <button className="boton-logo-barberia">
             <img
               src="/logo-ejemplo.png"
               alt="Logo barbería"
-              className="obg-barberia-logo"
+              className="logo-barberia"
             />
           </button>
 
-          {/* Formulario */}
-          <div className="obg-formulario">
-            <div className="obg-linea-top" />
-            <h2 className="obg-nombre">Urban Cuts</h2>
-            <p className="obg-subtitulo">Valora el establecimiento</p>
+          {/* Formulario de opinión */}
+          <div className="formulario-opinion">
+            <div className="linea-separadora" />
+            <h2 className="nombre-barberia">Urban Cuts</h2>
+            <p className="subtitulo-formulario">Valora el establecimiento</p>
 
-            <div className="obg-estrellas">
+            {/* Estrellas de calificación */}
+            <div className="estrellas-calificacion">
               {Array.from({ length: 5 }, (_, i) => (
                 <span
                   key={i}
-                  className={`obg-estrella ${i < rating ? "llena" : ""}`}
+                  className={`estrella ${i < rating ? "llena" : ""}`}
                   onClick={() => setRating(i + 1)}
                 >
                   ★
@@ -49,35 +52,37 @@ export default function OpinionBarberiaGeneral() {
               ))}
             </div>
 
-            <div className="obg-textarea-wrapper">
+            {/* Área de texto para comentario */}
+            <div className="comentario-wrapper">
               <textarea
-                className="obg-textarea"
+                className="comentario-textarea"
                 placeholder="Escribe tu comentario general aquí..."
                 maxLength={maxCaracteres}
                 value={comentario}
                 onChange={(e) => setComentario(e.target.value)}
               />
               {comentario === "" && (
-                <span className="obg-textarea-hint">
+                <span className="comentario-hint">
                   Comparte tu experiencia en el establecimiento, servicio general,
                   ambiente o cualquier aspecto de la barbería.
                 </span>
               )}
-              <span className="obg-contador">
+              <span className="contador-caracteres">
                 {comentario.length}/{maxCaracteres}
               </span>
             </div>
 
-            <button className="obg-btn-enviar">
+            {/* Botón para enviar comentario */}
+            <button className="boton-enviar">
               Enviar comentario a la barbería
             </button>
           </div>
         </div>
 
-        {/* Botón regresar */}
-        <div className="obg-footer">
-          <button className="obg-btn-regresar">Regresar</button>
-          <button className="obg-btn-comentario-barbero">
+        {/* Botones de acción en el pie */}
+        <div className="acciones-footer">
+          <button className="boton-regresar">Regresar</button>
+          <button className="boton-comentario-barbero">
             Hacer comentario general al barbero
           </button>
         </div>

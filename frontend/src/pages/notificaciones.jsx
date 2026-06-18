@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/notificaciones.css";
 
+/* Datos de notificaciones de prueba */
 const notificacionesData = [
   {
     id: 1,
@@ -39,28 +40,34 @@ const notificacionesData = [
   }
 ];
 
+/* Componente principal: Notificaciones */
 export default function Notificaciones() {
-  const [menuActivo, setMenuActivo] = useState("Notificaciones");
+  const [menuActivo, setMenuActivo] = useState("Notificaciones"); // Estado para menú lateral activo
 
+  // Acción al hacer clic en una notificación
   const handleNotificationClick = (id) => {
     console.log(`Notificación ${id} clickeada. Listo para conectar al backend.`);
   };
 
+  // Contador de notificaciones sin leer
   const sinLeerContador = notificacionesData.filter(n => !n.leido).length;
 
   return (
-    <div className="nt-dashboard">
-      <aside className="nt-sidebar-left">
-        <div className="nt-brand">
-          <img src="/barberhublogo.jpg" alt="Barber Hub" className="nt-logo-img" />
+    <div className="pagina-notificaciones">
+      {/*Barra lateral izquierda*/}
+      <aside className="sidebar">
+        {/*Marca Barber Hub*/}
+        <div className="marca">
+          <img src="/barberhublogo.jpg" alt="Barber Hub" className="logo-barberhub" />
           <h2>BARBER HUB</h2>
         </div>
 
-        <nav className="nt-nav-menu">
+        {/*Menú de navegación*/}
+        <nav className="menu-navegacion">
           {["Explorar", "Mis citas", "Historial", "Favoritos", "Notificaciones", "Ajustes"].map((item) => (
             <button
               key={item}
-              className={`nt-nav-btn ${menuActivo === item ? "activo" : ""}`}
+              className={`boton-menu ${menuActivo === item ? "activo" : ""}`}
               onClick={() => setMenuActivo(item)}
             >
               {item}
@@ -68,46 +75,50 @@ export default function Notificaciones() {
           ))}
         </nav>
 
-        <div className="nt-user-profile">
-          <div className="nt-avatar-placeholder">LM</div>
-          <div className="nt-user-info">
-            <span className="nt-user-name">Luis Méndez</span>
-            <span className="nt-user-role">Básico</span>
+        {/*Perfil de usuario*/}
+        <div className="perfil-usuario">
+          <div className="avatar-placeholder">LM</div>
+          <div className="info-usuario">
+            <span className="nombre-usuario">Luis Méndez</span>
+            <span className="rol-usuario">Básico</span>
           </div>
         </div>
       </aside>
 
-      <div className="nt-main-wrapper">
-        <header className="nt-main-header">
+      {/*Contenido principal*/}
+      <div className="contenedor-principal">
+        <header className="encabezado-principal">
           <h1>Notificaciones</h1>
         </header>
 
-        <main className="nt-content-layout">
-          <div className="nt-cards-container">
+        <main className="contenido">
+          <div className="contenedor-cards">
             
-            <div className="nt-unread-counter">
-              <span className="nt-counter-dot"></span>
+            {/*Contador de no leídas*/}
+            <div className="contador-no-leidas">
+              <span className="punto-indicador"></span>
               <p>{sinLeerContador} sin leer</p>
             </div>
 
-            <div className="nt-notifications-list">
+            {/*Lista de notificaciones*/}
+            <div className="lista-notificaciones">
               {notificacionesData.map((alerta) => (
                 <button 
                   key={alerta.id} 
-                  className={`nt-card-item-btn ${!alerta.leido ? "nt-no-leida" : ""}`}
+                  className={`tarjeta-notificacion ${!alerta.leido ? "no-leida" : ""}`}
                   onClick={() => handleNotificationClick(alerta.id)}
                   title="Marcar como leída / Ver detalles"
                 >
-                  <div className="nt-icon-placeholder"></div>
+                  <div className="icono-placeholder"></div>
 
-                  <div className="nt-item-info">
+                  <div className="info-notificacion">
                     <h3>{alerta.titulo}</h3>
-                    <p className="nt-item-description">{alerta.descripcion}</p>
+                    <p className="descripcion-notificacion">{alerta.descripcion}</p>
                   </div>
 
-                  <div className="nt-item-meta">
-                    <span className="nt-time-text">{alerta.tiempo}</span>
-                    {!alerta.leido && <span className="nt-unread-dot"></span>}
+                  <div className="meta-notificacion">
+                    <span className="texto-tiempo">{alerta.tiempo}</span>
+                    {!alerta.leido && <span className="punto-no-leida"></span>}
                   </div>
                 </button>
               ))}
