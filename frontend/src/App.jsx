@@ -24,6 +24,7 @@ import OpinionBarberiaGeneral from "./pages/opinion-barberia-general";
 import ComentarioEnviado from "./pages/comentario-enviado";
 import OwnerFinanzas from "./pages/owner/owner-finanzas";
 import PagoAnticipo from "./pages/pago-anticipo";
+import OwnerInventario from "./pages/owner/owner-inventario";
 
 export default function App() {
   return (
@@ -54,6 +55,7 @@ export default function App() {
         <Route path="/comentario-enviado" element={<ComentarioEnviado />} />
         <Route path="/owner/finanzas" element={<OwnerFinanzas />} />
         <Route path="/pago-anticipo" element={<PagoAnticipo />} />
+        <Route path="/owner/inventario" element={<OwnerInventario />} />
       </Routes>
     </BrowserRouter>
   );
