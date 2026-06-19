@@ -26,6 +26,7 @@ import OpinionBarberiaGeneral from "./pages/opinion-barberia-general";
 import ComentarioEnviado from "./pages/comentario-enviado";
 import OwnerFinanzas from "./pages/owner/owner-finanzas";
 import PagoAnticipo from "./pages/pago-anticipo";
+import OwnerInventario from "./pages/owner/owner-inventario";
 
 function AuthLayout({ children }) {
   return <SidebarLayout>{children}</SidebarLayout>;
@@ -213,6 +214,15 @@ export default function App() {
           element={
             <AuthLayout>
               <PagoAnticipo />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/barberia/:id"
+          element={
+            <AuthLayout>
+              <OwnerInventario />
             </AuthLayout>
           }
         />

@@ -1,14 +1,15 @@
 import { useState } from "react";
 import "../styles/opinion-barberia.css";
 
-const opiniones = [
+/* Datos ficticios de opiniones de clientes */
+const opinionesBarberia = [
   {
     id: 1,
     nombre: "Alexis Duran",
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     rating: 5,
     tiempo: "Hace 1 hora",
-    comentario: "Alexis siempre me deja  el corte perfecto. ¡Muy recomendado el lugar!",
+    comentario: "Alexis siempre me deja el corte perfecto. ¡Muy recomendado el lugar!",
   },
   {
     id: 2,
@@ -16,7 +17,7 @@ const opiniones = [
     avatar: "https://randomuser.me/api/portraits/men/45.jpg",
     rating: 4,
     tiempo: "Hace 2 días",
-    comentario: "Servicio execelente, siempre quedo muy satisfecho.",
+    comentario: "Servicio excelente, siempre quedo muy satisfecho.",
   },
   {
     id: 3,
@@ -24,13 +25,24 @@ const opiniones = [
     avatar: "https://randomuser.me/api/portraits/men/12.jpg",
     rating: 5,
     tiempo: "12 de mayo",
-    comentario: "El lugar es genial y los bareberos profesionales.",
+    comentario: "El lugar es genial y los barberos profesionales.",
   },
 ];
 
+const opinionesBarberos = [
+  { id: 1, 
+    nombre: "Carlos Reyes", 
+    avatar: "https://randomuser.me/api/por traits/men/22.jpg", 
+    rating: 5, 
+    tiempo: "Hace 3 horas", 
+    comentario: "Carlos es un barbero increíble, siempre atento a lo que quiero." 
+  }, 
+];
+
+/*Componente para mostrar estrellas de calificación*/
 function Estrellas({ rating, size = "normal" }) {
   return (
-    <span className={`bp-estrellas ${size}`}>
+    <span className={`estrellas ${size}`}>
       {Array.from({ length: 5 }, (_, i) => (
         <span key={i} className={i < rating ? "estrella llena" : "estrella"}>
           ★
@@ -40,121 +52,96 @@ function Estrellas({ rating, size = "normal" }) {
   );
 }
 
+/*Componente principal de Opiniones Barberia*/
 export default function OpinionBarberia() {
-  const [tabActiva, setTabActiva] = useState("barberia"); // "barberos" | "barberia"
-  const [filtroEstrellas, setFiltroEstrellas] = useState("todas");
+  const [tabActiva, setTabActiva] = useState("barberia"); // controla pestañas
+  const [filtroEstrellas, setFiltroEstrellas] = useState("todas"); // controla filtros
 
   return (
-    <div className="bp-page">
-      {/* Header */}
-      <header className="bp-header">
-        <img src="/logo.png" alt="Barber Hub" className="bp-logo" />
+    <div className="pagina-opiniones">
+      {/*Encabezado con logo*/}
+      <header className="encabezado">
+        <button className="boton-logo" onClick={() => console.log("Logo clickeado")}>
+          <img src="/logo.png" alt="Barber Hub" className="logo-barberhub" />
+        </button>
       </header>
 
-      <div className="bp-content">
-        {/* Encabezado de la barbería */}
-        <div className="bp-titulo-row">
+      <div className="contenido">
+        {/*Información principal de la barbería*/}
+        <div className="info-barberia">
           <div>
-            <h1 className="bp-nombre">Urban Cuts</h1>
-            <div className="bp-rating-row">
+            <h1 className="nombre-barberia">Urban Cuts</h1>
+            <div className="fila-rating">
               <Estrellas rating={5} />
-              <span className="bp-opiniones">(220 opiniones)</span>
+              <span className="total-opiniones">(220 opiniones)</span>
             </div>
-            <div className="bp-direccion">
-              <span className="bp-check">✔</span>
+            <div className="direccion-barberia">
+              <span className="icono-check">✔</span>
               Blvd. 10 de mayo, Puebla
             </div>
           </div>
 
-          <div className="bp-tabs">
+          {/*Pestañas para cambiar entre comentarios*/}
+          <div className="pestañas">
             <button
-              className={`bp-tab ${tabActiva === "barberos" ? "" : "inactivo"} ${
-                tabActiva === "barberos" ? "activo" : ""
-              }`}
-              onClick={() => setTabActiva("barberos")}
-            >
-              Comentarios Barberos
-            </button>
-            <button
-              className={`bp-tab ${tabActiva === "barberia" ? "activo" : "inactivo"}`}
+              className={`pestaña ${tabActiva === "barbería" ? "activo" : "inactivo"}`}
               onClick={() => setTabActiva("barberia")}
             >
               Comentarios Barbería
             </button>
+            <button
+              className={`pestaña ${tabActiva === "barberos" ? "activo" : "inactivo"}`}
+              onClick={() => setTabActiva("barberos")}
+            >
+              Comentarios Barberos
+            </button>
           </div>
         </div>
 
-        {/* Filtros */}
-        <div className="bp-filtros">
-          <span className="bp-filtros-label">Filtrar por:</span>
+        {/*Filtros de opiniones*/}
+        <div className="filtros-opiniones">
+          <span className="etiqueta-filtros">Filtrar por:</span>
 
           <button
-            className={`bp-filtro-btn ${filtroEstrellas === "todas" ? "activo" : ""}`}
-            onClick={() => setFiltroEstrellas("todas")}
-          >
+            className={`filtro ${filtroEstrellas === "todas" ? "activo" : ""}`}
+            onClick={() => setFiltroEstrellas("todas")}  >
             Todas
           </button>
 
-          <button
-            className={`bp-filtro-estrellas ${filtroEstrellas === 5 ? "activo" : ""}`}
-            onClick={() => setFiltroEstrellas(5)}
-          >
-            <Estrellas rating={5} />
-          </button>
+          {[5, 4, 3, 2, 1].map((num) => (
+            <button
+              key={num}
+              className={`filtro-estrellas ${filtroEstrellas === num ? "activo" : ""}`}
+              onClick={() => setFiltroEstrellas(num)} >
+              <Estrellas rating={num} />
+            </button>
+          ))}
 
-          <button
-            className={`bp-filtro-estrellas ${filtroEstrellas === 4 ? "activo" : ""}`}
-            onClick={() => setFiltroEstrellas(4)}
-          >
-            <Estrellas rating={4} />
-          </button>
-
-          <button
-            className={`bp-filtro-estrellas ${filtroEstrellas === 3 ? "activo" : ""}`}
-            onClick={() => setFiltroEstrellas(3)}
-          >
-            <Estrellas rating={3} />
-          </button>
-
-          <button
-            className={`bp-filtro-estrellas ${filtroEstrellas === 2 ? "activo" : ""}`}
-            onClick={() => setFiltroEstrellas(2)}
-          >
-            <Estrellas rating={2} />
-          </button>
-
-          <button
-            className={`bp-filtro-estrellas ${filtroEstrellas === 1 ? "activo" : ""}`}
-            onClick={() => setFiltroEstrellas(1)}
-          >
-            <Estrellas rating={1} />
-          </button>
-
-          <button className="bp-orden-btn">
-            Más recientes <span className="bp-chevron">&gt;</span>
+          <button className="boton-ordenar">
+            Más recientes <span className="icono-chevron"></span>
           </button>
         </div>
 
-        {/* Lista de opiniones */}
-        <div className="bp-opiniones-lista">
-          {opiniones.map((op) => (
-            <div key={op.id} className="bp-opinion">
-              <img src={op.avatar} alt={op.nombre} className="bp-avatar" />
-              <div className="bp-opinion-cuerpo">
-                <div className="bp-opinion-header">
-                  <span className="bp-opinion-nombre">{op.nombre}</span>
+        {/*Lista de opiniones*/}
+        <div className="lista-opiniones">
+          {(tabActiva === "barberia" ? opinionesBarberia : opinionesBarberos).map((op) => (
+            <div key={op.id} className="tarjeta-opinion">
+              <img src={op.avatar} alt={op.nombre} className="avatar-cliente" />
+              <div className="cuerpo-opinion">
+                <div className="encabezado-opinion">
+                  <span className="nombre-cliente">{op.nombre}</span>
                   <Estrellas rating={op.rating} size="small" />
-                  <span className="bp-opinion-tiempo">{op.tiempo}</span>
+                  <span className="tiempo-opinion">{op.tiempo}</span>
                 </div>
-                <p className="bp-opinion-texto">{op.comentario}</p>
+                <p className="texto-opinion">{op.comentario}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Botones de acción */}
-        <div className="bp-acciones">
-          <button className="bp-btn bp-btn-regresar">Regresar</button>
+        {/*Botón de acción, regresar*/}
+        <div className="acciones">
+          <button className="boton-regresar">Regresar</button>
         </div>
       </div>
     </div>

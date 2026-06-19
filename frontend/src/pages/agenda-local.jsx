@@ -52,6 +52,7 @@ export default function AgendaLocal() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="ag-page" style={{ paddingBottom: '40px', fontFamily: 'sans-serif' }}>
       <main className="ag-main" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px' }}>
         <h1 style={{ fontFamily: 'serif', fontSize: '36px', fontWeight: 'bold', color: '#e8c46a', textAlign: 'center', marginBottom: '40px' }}>
@@ -63,18 +64,41 @@ export default function AgendaLocal() {
           
           {/* Columna Izquierda: Calendario */}
           <div className="al-calendar-grid">
+=======
+    <div className="pagina-agenda">
+      {/* Encabezado Superior */}
+      <header className="encabezado-agenda">
+        <div className="info-marca">
+          <img src="/barberhublogo.jpg" alt="Logo" className="logo-barberia" />
+          <div className="texto-marca">
+            <h2>URBAN CUTS</h2>
+            <span>Barbería</span>
+          </div>
+        </div>
+        <h1 className="titulo-agenda">Agenda tu próximo corte</h1>
+      </header>
+
+      {/* Contenido Principal */}
+      <main className="contenido-agenda">
+        
+        {/* Columna Izquierda: Calendario */}
+        <section className="seccion-calendario">
+          <h3 className="titulo-mes">MAYO 2026</h3>
+          
+          <div className="grid-calendario">
+>>>>>>> 078b1141fafcdef52af98af1599c4255dcbb2796
             {["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((d) => (
-              <div key={d} className="al-weekday-header">{d}</div>
+              <div key={d} className="encabezado-dia">{d}</div>
             ))}
 
             {diasMayo.map((dia, index) => {
-              if (dia === "") return <div key={`empty-${index}`} className="al-day-cell empty"></div>;
+              if (dia === "") return <div key={`empty-${index}`} className="celda-dia vacia"></div>;
               
               const esSeleccionado = diaSeleccionado === dia;
               return (
                 <div
                   key={`dia-${dia}`}
-                  className={`al-day-cell ${esSeleccionado ? "active" : ""}`}
+                  className={`celda-dia ${esSeleccionado ? "activo" : ""}`}
                   onClick={() => setDiaSeleccionado(dia)}
                 >
                   {dia}
@@ -83,6 +107,7 @@ export default function AgendaLocal() {
             })}
           </div>
 
+<<<<<<< HEAD
           {/* Columna Derecha: Horarios Disponibles */}
           <section className="al-hours-section">
             <h3 className="al-hours-title">HORARIOS DISPONIBLES</h3>
@@ -126,6 +151,57 @@ export default function AgendaLocal() {
                 <span>Ocupado</span>
               </div>
             </div>
+=======
+        {/* Columna Derecha: Horarios Disponibles */}
+        <section className="seccion-horarios">
+          <h3 className="titulo-horarios">HORARIOS DISPONIBLES</h3>
+
+          <div className="grid-horarios">
+            {horariosBase.map((item) => {
+              const esElSeleccionadoActual = horaSeleccionada === item.hora;
+              
+              // Definición dinámica de clases según tus reglas:
+              let claseEstado = "disponible"; // Por defecto Verde
+              if (item.ocupado) {
+                claseEstado = "ocupado"; // Rojo estático
+              } else if (esElSeleccionadoActual) {
+                claseEstado = "seleccionado"; // El disponible activo se vuelve Gris
+              }
+
+              return (
+                <button
+                  key={item.hora}
+                  className={`boton-hora ${claseEstado}`}
+                  disabled={item.ocupado}
+                  onClick={() => setHoraSeleccionada(item.hora)}
+                >
+                  {item.hora}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Código de Colores / Leyenda */}
+          <div className="caja-leyenda">
+            <div className="item-leyenda">
+              <span className="punto-leyenda seleccionado"></span>
+              <span>Seleccionado</span>
+            </div>
+            <div className="item-leyenda">
+              <span className="punto-leyenda disponible"></span>
+              <span>Disponible</span>
+            </div>
+            <div className="item-leyenda">
+              <span className="punto-leyenda ocupado"></span>
+              <span>Ocupado</span>
+            </div>
+          </div>
+
+          <button className="boton-continuar" onClick={handleContinuar}>
+            Continuar
+          </button>
+        </section>
+>>>>>>> 078b1141fafcdef52af98af1599c4255dcbb2796
 
             <button className="al-btn-submit" onClick={handleContinuar}>
               Continuar

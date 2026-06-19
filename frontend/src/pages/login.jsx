@@ -4,22 +4,29 @@ import { apiFetch, saveSession } from "../utils/api";
 import BrandLogo from "../components/brand-logo";
 import "../styles/login.css";
 
+/* Componente principal: Login*/
 export default function Login() {
   const navigate = useNavigate();
   const { state } = useLocation();
+
+  // Estado del formulario
   const [form, setForm] = useState({
     email: state?.email ?? "",
     password: "",
   });
+
+  // Estados auxiliares
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const mensajeExito = state?.cuentaVerificada ? state.mensaje : null;
 
+  // Manejo de cambios en inputs
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setError("");
   };
 
+  // Manejo de envío de formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -43,20 +50,21 @@ export default function Login() {
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="pagina-login">
 
-      {/* ── COLUMNA IZQUIERDA — imagen + overlay ── */}
-      <div className="login-left">
-        <div className="login-overlay" />
-        <div className="login-left-content">
+      {/* Columna izquierda: imagen + overlay */}
+      <div className="login-columna-izquierda">
+        <div className="overlay-login" />
+        <div className="contenido-izquierdo">
 
-          <BrandLogo className="login-logo" imgClassName="login-logo-img" />
+          {/* Logo de marca */}
+          <BrandLogo className="logo-login" imgClassName="logo-login-img" />
 
           {/* Texto hero */}
-          <div className="login-hero-text">
+          <div className="texto-hero-login">
             <h2>
               Encuentra tu barbería ideal{" "}
-              <span className="login-accent">en segundos</span>
+              <span className="acento-login">en segundos</span>
             </h2>
             <p>
               Reserva citas, conviértete en cliente VIP y
@@ -65,27 +73,29 @@ export default function Login() {
           </div>
 
           {/* Footer izquierdo */}
-          <div className="login-left-footer">
+          <div className="footer-izquierdo">
             © 2026 Barber Hub · Todos los derechos reservados
           </div>
         </div>
       </div>
 
-      {/* ── COLUMNA DERECHA — formulario ── */}
-      <div className="login-right">
-        <div className="login-form-wrap">
-          <h1 className="login-title">¡Bienvenido!</h1>
-          <p className="login-subtitle">Inicia sesión para continuar</p>
+      {/* Columna derecha: formulario */}
+      <div className="login-columna-derecha">
+        <div className="formulario-login">
+          <h1 className="titulo-login">¡Bienvenido!</h1>
+          <p className="subtitulo-login">Inicia sesión para continuar</p>
 
+          {/* Mensaje de éxito si la cuenta fue verificada */}
           {mensajeExito && (
-            <p className="login-success" role="status">
+            <p className="mensaje-exito-login" role="status">
               {mensajeExito}
             </p>
           )}
 
-          <form className="login-form" onSubmit={handleSubmit}>
+          {/* Formulario */}
+          <form className="form-login" onSubmit={handleSubmit}>
             <input
-              className="login-input"
+              className="input-login"
               type="email"
               name="email"
               placeholder="Correo electrónico"
@@ -95,7 +105,7 @@ export default function Login() {
             />
 
             <input
-              className="login-input"
+              className="input-login"
               type="password"
               name="password"
               placeholder="Contraseña"
@@ -104,20 +114,23 @@ export default function Login() {
               required
             />
 
-            {error && <p className="login-error">{error}</p>}
+            {/* Mensaje de error */}
+            {error && <p className="error-login">{error}</p>}
 
-            <div className="login-forgot">
+            {/* Link recuperar contraseña */}
+            <div className="recuperar-login">
               <button
                 type="button"
-                className="login-link-gold"
+                className="link-dorado-login"
                 onClick={() => navigate("/recuperar-password")}
               >
                 ¿Olvidaste tu contraseña?
               </button>
             </div>
 
+            {/* Botón enviar */}
             <button
-              className="login-btn-submit"
+              className="btn-submit-login"
               type="submit"
               disabled={loading}
             >
@@ -125,11 +138,12 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="login-register-row">
+          {/* Link registro */}
+          <p className="registro-login">
             ¿No tienes cuenta?{" "}
             <button
               type="button"
-              className="login-link-gold"
+              className="link-dorado-login"
               onClick={() => navigate("/registro")}
             >
               Regístrate

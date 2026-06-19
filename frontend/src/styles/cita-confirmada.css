@@ -1,4 +1,5 @@
-.cc-page {
+/* Página principal*/
+.pagina-cita {
   min-height: 100vh;
   background: #ffffff;
   display: flex;
@@ -6,7 +7,8 @@
   font-family: "Inter", system-ui, sans-serif;
 }
 
-.cc-body {
+/* Contenedor central */
+.contenido-cita {
   flex: 1;
   display: flex;
   align-items: center;
@@ -14,13 +16,15 @@
   padding: 40px 24px;
 }
 
-.cc-card {
+/* Tarjeta de confirmación */
+.tarjeta-cita {
   width: 100%;
   max-width: 420px;
   text-align: center;
 }
 
-.cc-icon-wrap {
+/* Icono circular de confirmación */
+.icono-confirmacion {
   width: 72px;
   height: 72px;
   margin: 0 auto 20px;
@@ -32,7 +36,8 @@
   box-shadow: 0 0 0 4px #111, 0 0 0 6px #fff;
 }
 
-.cc-title {
+/* Título principal */
+.titulo-cita {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 28px;
   font-weight: 700;
@@ -40,7 +45,8 @@
   margin-bottom: 16px;
 }
 
-.cc-message {
+/* Mensaje de confirmación */
+.mensaje-cita {
   font-size: 14px;
   color: #888;
   line-height: 1.65;
@@ -50,12 +56,13 @@
   margin-right: auto;
 }
 
-.cc-message strong {
+.mensaje-cita strong {
   color: #444;
   font-weight: 600;
 }
 
-.cc-summary {
+/* Resumen de la cita */
+.resumen-cita {
   text-align: left;
   border: 1.5px solid #ddd0ba;
   border-radius: 12px;
@@ -64,7 +71,8 @@
   margin-bottom: 28px;
 }
 
-.cc-summary-header {
+/* Encabezado del resumen */
+.resumen-encabezado {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,26 +82,27 @@
   background: #fff;
 }
 
-.cc-summary-time {
+.resumen-hora {
   font-size: 14px;
   font-weight: 600;
   color: #111;
 }
 
-.cc-summary-price {
+.resumen-precio {
   font-size: 15px;
   font-weight: 700;
   color: #c9a227;
 }
 
-.cc-summary-body {
+/* Cuerpo del resumen */
+.resumen-detalle {
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 16px 18px;
 }
 
-.cc-summary-logo-btn {
+.resumen-logo-btn {
   padding: 0;
   border: none;
   background: none;
@@ -101,7 +110,7 @@
   flex-shrink: 0;
 }
 
-.cc-summary-logo {
+.resumen-logo {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -109,26 +118,27 @@
   display: block;
 }
 
-.cc-service-name {
+.nombre-servicio {
   font-size: 15px;
   font-weight: 700;
   color: #111;
   margin-bottom: 4px;
 }
 
-.cc-shop-name {
+.nombre-barberia {
   font-size: 13px;
   color: #666;
 }
 
-.cc-actions {
+/* Acciones*/
+.acciones-cita {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.cc-btn-outline,
-.cc-btn-primary {
+.boton-outline,
+.boton-principal {
   padding: 14px 12px;
   border-radius: 10px;
   font-family: inherit;
@@ -138,29 +148,32 @@
   transition: opacity 0.2s, transform 0.15s;
 }
 
-.cc-btn-outline {
+/* Botón secundario */
+.boton-outline {
   background: #f8f8f8;
   border: 1.5px solid #ddd0ba;
   color: #111;
 }
 
-.cc-btn-outline:hover {
+.boton-outline:hover {
   background: #f0f0f0;
 }
 
-.cc-btn-primary {
+/* Botón principal */
+.boton-principal {
   background: #111;
   border: none;
   color: #c9a227;
 }
 
-.cc-btn-primary:hover {
+.boton-principal:hover {
   background: #222;
   transform: translateY(-1px);
 }
 
+/*  Responsive */
 @media (max-width: 400px) {
-  .cc-actions {
+  .acciones-cita {
     grid-template-columns: 1fr;
   }
 }

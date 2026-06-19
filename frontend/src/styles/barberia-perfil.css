@@ -1,17 +1,18 @@
-.bp-page {
+/* ===== Página principal ===== */
+.pagina-barberia {
   min-height: 100vh;
   background: #f5f5f5;
   font-family: "Inter", system-ui, sans-serif;
 }
 
-.bp-main {
+.contenido-barberia {
   max-width: 1180px;
   margin: 0 auto;
   padding: 32px 40px 56px;
 }
 
-/* ── Hero negro ── */
-.bp-hero {
+/* ===== Hero principal ===== */
+.hero-barberia {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +24,7 @@
   color: #fff;
 }
 
-.bp-hero-left {
+.hero-izquierda {
   display: flex;
   align-items: center;
   gap: 24px;
@@ -31,7 +32,7 @@
   min-width: 0;
 }
 
-.bp-hero-logo {
+.logo-barberia {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -41,7 +42,7 @@
   padding: 4px;
 }
 
-.bp-hero-title {
+.titulo-barberia {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(28px, 4vw, 38px);
   font-weight: 700;
@@ -49,7 +50,7 @@
   line-height: 1.15;
 }
 
-.bp-hero-rating {
+.rating-barberia {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -59,13 +60,13 @@
   margin-bottom: 10px;
 }
 
-.bp-stars {
+.estrellas-barberia {
   display: inline-flex;
   gap: 2px;
   color: #c9a227;
 }
 
-.bp-hero-address {
+.direccion-barberia {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -74,7 +75,7 @@
   margin-bottom: 8px;
 }
 
-.bp-hero-status {
+.estado-barberia {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -83,7 +84,7 @@
   font-weight: 500;
 }
 
-.bp-status-dot {
+.estado-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -91,20 +92,21 @@
   flex-shrink: 0;
 }
 
-.bp-status-dot--open {
+.estado-dot--abierto {
   background: #22c55e;
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.35);
 }
 
-.bp-hero-actions {
+/* ===== Botones de acción en el hero ===== */
+.acciones-hero {
   display: flex;
   flex-direction: column;
   gap: 12px;
   flex-shrink: 0;
 }
 
-.bp-btn-map,
-.bp-btn-book {
+.boton-mapa,
+.boton-agendar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -120,36 +122,37 @@
   min-width: 180px;
 }
 
-.bp-btn-map {
+.boton-mapa {
   background: transparent;
   border: 1.5px solid #c9a227;
   color: #c9a227;
 }
 
-.bp-btn-map:hover {
+.boton-mapa:hover {
   background: rgba(201, 162, 39, 0.1);
 }
 
-.bp-btn-book {
+.boton-agendar {
   background: #c9a227;
   border: none;
   color: #fff;
 }
 
-.bp-btn-book:hover {
+.boton-agendar:hover {
   background: #b8911e;
   transform: translateY(-1px);
 }
 
-/* ── Grid 3 columnas ── */
-.bp-grid {
+/* ===== Grid de tres columnas ===== */
+.grid-barberia {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   align-items: start;
 }
 
-.bp-panel {
+/* ===== Panel genérico ===== */
+.panel-barberia {
   background: #fff;
   border: 1.5px solid #ddd0ba;
   border-radius: 16px;
@@ -159,7 +162,7 @@
   flex-direction: column;
 }
 
-.bp-panel-head {
+.panel-encabezado {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -168,29 +171,29 @@
   border-bottom: 1px solid #f0ebe3;
 }
 
-.bp-panel-head h2 {
+.panel-encabezado h2 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 20px;
   font-weight: 700;
   color: #111;
 }
 
-.bp-panel-icon {
+.icono-panel {
   color: #111;
   flex-shrink: 0;
 }
 
-.bp-panel-icon--gold {
+.icono-panel.dorado {
   color: #c9a227;
 }
 
-/* Servicios */
-.bp-service-list {
+/* ===== Servicios ===== */
+.lista-servicios {
   list-style: none;
   flex: 1;
 }
 
-.bp-service-item {
+.item-servicio {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -201,23 +204,23 @@
   color: #111;
 }
 
-.bp-service-item:last-child {
+.item-servicio:last-child {
   border-bottom: none;
 }
 
-.bp-service-left {
+.servicio-izquierda {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.bp-service-price {
+.precio-servicio {
   font-weight: 700;
   color: #c9a227;
   flex-shrink: 0;
 }
 
-.bp-btn-more {
+.boton-ver-mas {
   margin-top: 16px;
   width: 100%;
   padding: 12px;
@@ -232,16 +235,16 @@
   transition: background 0.2s;
 }
 
-.bp-btn-more:hover {
+.boton-ver-mas:hover {
   background: rgba(201, 162, 39, 0.08);
 }
 
-/* Barberos */
-.bp-barber-list {
+/* ===== Barberos ===== */
+.lista-barberos {
   list-style: none;
 }
 
-.bp-barber-item {
+.item-barbero {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -249,11 +252,11 @@
   border-bottom: 1px solid #f5f0e8;
 }
 
-.bp-barber-item:last-child {
+.item-barbero:last-child {
   border-bottom: none;
 }
 
-.bp-barber-photo {
+.foto-barbero {
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -261,14 +264,14 @@
   flex-shrink: 0;
 }
 
-.bp-barber-name {
+.nombre-barbero {
   font-size: 15px;
   font-weight: 600;
   color: #111;
   margin-bottom: 4px;
 }
 
-.bp-barber-rating {
+.rating-barbero {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -277,22 +280,22 @@
   color: #111;
 }
 
-.bp-barber-rating svg {
+.rating-barbero svg {
   color: #c9a227;
 }
 
-.bp-barber-reviews {
+.opiniones-barbero {
   font-weight: 400;
   color: #888;
 }
 
-/* Opiniones */
-.bp-review-list {
+/* ===== Opiniones ===== */
+.lista-opiniones {
   list-style: none;
   flex: 1;
 }
 
-.bp-review-item {
+.item-opinion {
   display: flex;
   gap: 8px;
   align-items: flex-start;
@@ -300,65 +303,65 @@
   border-bottom: 1px solid #f5f0e8;
 }
 
-.bp-review-item:last-child {
+.item-opinion:last-child {
   border-bottom: none;
 }
 
-.bp-review-chevron {
+.chevron-opinion {
   color: #c9a227;
   flex-shrink: 0;
   margin-top: 3px;
 }
 
-.bp-review-item p {
+.item-opinion p {
   font-size: 13px;
   line-height: 1.6;
   color: #333;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 1024px) {
-  .bp-grid {
+  .grid-barberia {
     grid-template-columns: 1fr;
   }
 
-  .bp-hero {
+  .hero-barberia {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .bp-hero-actions {
+  .acciones-hero {
     flex-direction: row;
     flex-wrap: wrap;
   }
 
-  .bp-btn-map,
-  .bp-btn-book {
+  .boton-mapa,
+  .boton-agendar {
     flex: 1;
     min-width: 140px;
   }
 }
 
 @media (max-width: 600px) {
-  .bp-main {
+  .contenido-barberia {
     padding: 20px 16px 40px;
   }
 
-  .bp-hero {
+  .hero-barberia {
     padding: 24px 20px;
     border-radius: 18px;
   }
 
-  .bp-hero-left {
+  .hero-izquierda {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .bp-hero-actions {
+  .acciones-hero {
     flex-direction: column;
   }
 
-  .bp-btn-map,
-  .bp-btn-book {
+  .boton-mapa,
+  .boton-agendar {
     width: 100%;
-  }
-}
+  }}

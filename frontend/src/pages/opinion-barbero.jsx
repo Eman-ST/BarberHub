@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/opinion-barbero.css";
 
+/* Datos de barberos disponibles */
 const barberos = [
   { id: 1, nombre: "Alexis Duran", foto: "https://randomuser.me/api/portraits/men/32.jpg" },
   { id: 2, nombre: "Marco Pedraza", foto: "https://randomuser.me/api/portraits/men/45.jpg" },
@@ -10,62 +11,63 @@ const barberos = [
   { id: 6, nombre: "Juan Sanchez", foto: "https://randomuser.me/api/portraits/men/61.jpg" },
 ];
 
+/* Componente principal: Opinión Barbero */
 export default function OpinionBarbero() {
-  const [barberoSeleccionado, setBarberoSeleccionado] = useState(barberos[0]);
-  const [rating, setRating] = useState(5);
-  const [comentario, setComentario] = useState("");
-  const maxCaracteres = 1000;
+  const [barberoSeleccionado, setBarberoSeleccionado] = useState(barberos[0]); // Estado para barbero elegido
+  const [rating, setRating] = useState(5); // Estado para calificación
+  const [comentario, setComentario] = useState(""); // Estado para comentario
+  const maxCaracteres = 1000; // Límite de caracteres
 
   return (
-    <div className="ve-page">
-      {/* Header */}
-      <header className="ve-header">
-        <img src="/logo.png" alt="Barber Hub" className="ve-logo" />
+    <div className="pagina-barbero">
+      {/*Encabezado con logo*/}
+      <header className="encabezado">
+        <img src="/logo.png" alt="Barber Hub" className="logo-barberhub" />
       </header>
 
-      <div className="ve-content">
-        <h1 className="ve-titulo">
+      <div className="contenido">
+        {/*Título principal*/}
+        <h1 className="titulo-principal">
           Valora tu experiencia
           <br />
           con nosotros
         </h1>
 
-        <div className="ve-cuerpo">
-          {/* Selección de barbero */}
-          <div className="ve-barberos">
-            <h2 className="ve-subtitulo">Selecciona a tu barbero</h2>
+        <div className="cuerpo">
+          {/*Selección de barbero*/}
+          <div className="seccion-barberos">
+            <h2 className="subtitulo">Selecciona a tu barbero</h2>
 
-            <div className="ve-barberos-grid">
+            <div className="grid-barberos">
               {barberos.map((b) => (
                 <button
                   key={b.id}
-                  className={`ve-barbero ${
-                    barberoSeleccionado.id === b.id ? "seleccionado" : ""
-                  }`}
+                  className={`tarjeta-barbero ${barberoSeleccionado.id === b.id ? "seleccionado" : ""}`}
                   onClick={() => setBarberoSeleccionado(b)}
                 >
-                  <img src={b.foto} alt={b.nombre} className="ve-barbero-foto" />
-                  <span className="ve-barbero-nombre">{b.nombre}</span>
+                  <img src={b.foto} alt={b.nombre} className="foto-barbero" />
+                  <span className="nombre-barbero">{b.nombre}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Tarjeta de opinión */}
-          <div className="ve-card">
+          {/*Tarjeta de opinión*/}
+          <div className="tarjeta-opinion">
             <img
               src={barberoSeleccionado.foto}
               alt={barberoSeleccionado.nombre}
-              className="ve-card-foto"
+              className="foto-opinion"
             />
-            <h3 className="ve-card-nombre">{barberoSeleccionado.nombre}</h3>
-            <p className="ve-card-subtitulo">Tu opinión es importante</p>
+            <h3 className="nombre-opinion">{barberoSeleccionado.nombre}</h3>
+            <p className="subtitulo-opinion">Tu opinión es importante</p>
 
-            <div className="ve-estrellas">
+            {/*Estrellas de calificación*/}
+            <div className="estrellas-calificacion">
               {Array.from({ length: 5 }, (_, i) => (
                 <span
                   key={i}
-                  className={`ve-estrella ${i < rating ? "llena" : ""}`}
+                  className={`estrella ${i < rating ? "llena" : ""}`}
                   onClick={() => setRating(i + 1)}
                 >
                   ★
@@ -73,30 +75,33 @@ export default function OpinionBarbero() {
               ))}
             </div>
 
-            <div className="ve-textarea-wrapper">
+            {/*Área de comentario*/}
+            <div className="comentario-wrapper">
               <textarea
-                className="ve-textarea"
+                className="comentario-textarea"
                 placeholder="Escribe tu comentario aquí..."
                 maxLength={maxCaracteres}
                 value={comentario}
                 onChange={(e) => setComentario(e.target.value)}
               />
               {comentario === "" && (
-                <span className="ve-textarea-hint">
+                <span className="comentario-hint">
                   Comparte tu experiencia con {barberoSeleccionado.nombre}.
                 </span>
               )}
-              <span className="ve-contador">
+              <span className="contador-caracteres">
                 {comentario.length}/{maxCaracteres}
               </span>
             </div>
 
-            <button className="ve-btn-enviar">Enviar mi comentario</button>
+            {/*Botón enviar*/}
+            <button className="boton-enviar">Enviar mi comentario</button>
           </div>
         </div>
 
-        <div className="ve-acciones-footer">
-          <button className="ve-btn-regresar">Regresar</button>
+        {/*Footer con botón regresar*/}
+        <div className="acciones-footer">
+          <button className="boton-regresar">Regresar</button>
         </div>
       </div>
     </div>

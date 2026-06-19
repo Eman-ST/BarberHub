@@ -1,4 +1,4 @@
-.al-page-container {
+.pagina-agenda {
   min-height: 100vh;
   background-color: #ffffff;
   display: flex;
@@ -6,25 +6,23 @@
   font-family: "Inter", system-ui, sans-serif;
 }
 
-/* ==========================================================================
-   1. ENCABEZADO SUPERIOR
-   ========================================================================== */
-.al-main-header {
+/* ENCABEZADO SUPERIOR */
+.encabezado-agenda {
   background-color: #121212;
-  padding: 22px 60px; /* Más espaciado */
+  padding: 22px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #ffffff;
 }
 
-.al-brand-info {
+.info-marca {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.al-barber-logo {
+.logo-barberia {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -32,7 +30,7 @@
   object-fit: cover;
 }
 
-.al-brand-text h2 {
+.texto-marca h2 {
   font-size: 1.45rem;
   font-weight: 700;
   color: #e5be6b;
@@ -40,75 +38,71 @@
   letter-spacing: 0.5px;
 }
 
-.al-brand-text span {
+.texto-marca span {
   font-size: 0.95rem;
   color: #8e8e93;
 }
 
-.al-header-title {
+.titulo-agenda {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 2.1rem; /* Título principal más grande */
+  font-size: 2.1rem;
   font-weight: 600;
   color: #e5be6b;
   margin: 0;
 }
 
-/* ==========================================================================
-   2. LAYOUT MAXIMIZADO (Contenedor más grande)
-   ========================================================================== */
-.al-content-layout {
+/*LAYOUT PRINCIPAL*/
+.contenido-agenda {
   flex: 1;
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr; /* Más peso visual al calendario */
-  gap: 70px; /* Mayor separación entre columnas */
-  padding: 60px 80px; /* Más margen interno general */
-  max-width: 1600px; /* Expandido para pantallas grandes */
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 70px;
+  padding: 60px 80px;
+  max-width: 1600px;
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
 }
 
-.al-month-title {
-  font-size: 1.6rem; /* Título de MAYO 2026 notablemente más grande */
+.titulo-mes {
+  font-size: 1.6rem;
   font-weight: 800;
   color: #000000;
   margin: 0 0 30px 0;
   letter-spacing: 0.5px;
 }
 
-.al-hours-title {
-  font-size: 1.2rem; /* Título de horarios más grande */
+.titulo-horarios {
+  font-size: 1.2rem;
   font-weight: 800;
   color: #444444;
   margin: 0 0 30px 0;
   letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   3. CALENDARIO GIGANTE
-   ========================================================================== */
-.al-calendar-grid {
+/* CALENDARIO */
+.grid-calendario {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   border-top: 1px solid #e5e5e7;
   border-left: 1px solid #e5e5e7;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); /* Sutil relieve */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
-.al-weekday-header {
+.encabezado-dia {
   background-color: #f2f2f7;
-  padding: 20px 5px; /* Más alto */
-  font-size: 1.1rem; /* Texto de días más legible */
+  padding: 20px 5px;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #121212;
   text-align: center;
   border-right: 1px solid #ffffff;
 }
 
-.al-day-cell {
-  aspect-ratio: 1.35 / 1; /* Celdas rectangulares masivas y espaciosas */
-  padding: 22px; /* Mayor espacio interior para los números */
-  font-size: 1.35rem; /* Números del calendario grandes y claros */
+.celda-dia {
+  aspect-ratio: 1.35 / 1;
+  padding: 22px;
+  font-size: 1.35rem;
   font-weight: 600;
   color: #121212;
   border-right: 1px solid #e5e5e7;
@@ -117,100 +111,96 @@
   transition: all 0.15s ease;
 }
 
-.al-day-cell:hover:not(.empty) {
+.celda-dia:hover:not(.vacia) {
   background-color: #f5f5f7;
 }
 
-.al-day-cell.active {
+.celda-dia.activo {
   background-color: #fffdf9;
-  border: 3px solid #e5be6b; /* Borde de selección más grueso */
+  border: 3px solid #e5be6b;
   font-weight: 800;
 }
 
-.al-day-cell.empty {
+.celda-dia.vacia {
   background-color: #f9f9fb;
   cursor: default;
 }
 
-/* ==========================================================================
-   4. CONTROL DE HORARIOS (Botones ampliados)
-   ========================================================================== */
-.al-hours-grid {
+/* HORARIOS*/
+.grid-horarios {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Más separación entre botones */
+  gap: 20px;
   margin-bottom: 45px;
 }
 
-.al-hour-btn {
-  padding: 22px 12px; /* Botones de hora más altos y cómodos */
-  font-size: 1.25rem; /* Texto de horas más grande */
+.boton-hora {
+  padding: 22px 12px;
+  font-size: 1.25rem;
   font-weight: 700;
   border: none;
   border-radius: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
-  box-shadow: none !important;
 }
 
-/* VERDE = Disponible */
-.al-hour-btn.disponible {
-  background-color: #a3e8bb; 
+/* Verde = Disponible */
+.boton-hora.disponible {
+  background-color: #a3e8bb;
   color: #121212;
 }
 
-.al-hour-btn.disponible:hover {
+.boton-hora.disponible:hover {
   background-color: #8cd9a7;
   transform: translateY(-2px);
 }
 
-/* GRIS = Seleccionado actualmente */
-.al-hour-btn.seleccionado {
-  background-color: #d1d1d6; 
+/* Gris = Seleccionado */
+.boton-hora.seleccionado {
+  background-color: #d1d1d6;
   color: #121212;
   cursor: default;
 }
 
-/* ROJO = Ocupado estático */
-.al-hour-btn.ocupado {
-  background-color: #ffb3b3; 
+/* Rojo = Ocupado */
+.boton-hora.ocupado {
+  background-color: #ffb3b3;
   color: #7f2727;
   cursor: not-allowed;
-  opacity: 1;
 }
 
-/* Leyenda de Código de Colores */
-.al-legend-box {
+/*LEYENDA */
+.caja-leyenda {
   display: flex;
   gap: 30px;
   margin-bottom: 50px;
-  font-size: 1.1rem; /* Texto de leyenda más grande */
+  font-size: 1.1rem;
   font-weight: 600;
   color: #444444;
 }
 
-.al-legend-item {
+.item-leyenda {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.al-dot {
-  width: 32px; /* Indicadores de color más grandes */
+.punto-leyenda {
+  width: 32px;
   height: 20px;
   border-radius: 6px;
   display: inline-block;
 }
 
-.legend-seleccionado { background-color: #d1d1d6; }
-.legend-disponible { background-color: #a3e8bb; }
-.legend-ocupado { background-color: #ffb3b3; }
+.punto-leyenda.seleccionado { background-color: #d1d1d6; }
+.punto-leyenda.disponible { background-color: #a3e8bb; }
+.punto-leyenda.ocupado { background-color: #ffb3b3; }
 
-/* Botón de envío inferior masivo */
-.al-btn-submit {
+/* BOTÓN CONTINUAR */
+.boton-continuar {
   width: 100%;
-  padding: 22px; /* Botón de continuar más imponente */
+  padding: 22px;
   background-color: #121212;
   border: none;
   border-radius: 16px;
@@ -221,14 +211,14 @@
   transition: all 0.2s ease;
 }
 
-.al-btn-submit:hover {
+.boton-continuar:hover {
   background-color: #252525;
   transform: translateY(-2px);
 }
 
 /* Responsive */
 @media (max-width: 1150px) {
-  .al-content-layout {
+  .contenido-agenda {
     grid-template-columns: 1fr;
     gap: 50px;
     padding: 40px 30px;

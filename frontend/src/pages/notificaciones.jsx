@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/notificaciones.css";
 
+/* Datos de notificaciones de prueba */
 const notificacionesData = [
   {
     id: 1,
@@ -39,13 +40,16 @@ const notificacionesData = [
   }
 ];
 
+/* Componente principal: Notificaciones */
 export default function Notificaciones() {
-  const [menuActivo, setMenuActivo] = useState("Notificaciones");
+  const [menuActivo, setMenuActivo] = useState("Notificaciones"); // Estado para menú lateral activo
 
+  // Acción al hacer clic en una notificación
   const handleNotificationClick = (id) => {
     console.log(`Notificación ${id} clickeada. Listo para conectar al backend.`);
   };
 
+  // Contador de notificaciones sin leer
   const sinLeerContador = notificacionesData.filter(n => !n.leido).length;
 
   return (
@@ -53,32 +57,34 @@ export default function Notificaciones() {
       <div className="nt-main-wrapper" style={{ paddingTop: "0px" }}>
         {/* Se removió el header redundante para que el contenido suba */}
 
-        <main className="nt-content-layout">
-          <div className="nt-cards-container">
+        <main className="contenido">
+          <div className="contenedor-cards">
             
-            <div className="nt-unread-counter">
-              <span className="nt-counter-dot"></span>
+            {/*Contador de no leídas*/}
+            <div className="contador-no-leidas">
+              <span className="punto-indicador"></span>
               <p>{sinLeerContador} sin leer</p>
             </div>
 
-            <div className="nt-notifications-list">
+            {/*Lista de notificaciones*/}
+            <div className="lista-notificaciones">
               {notificacionesData.map((alerta) => (
                 <button 
                   key={alerta.id} 
-                  className={`nt-card-item-btn ${!alerta.leido ? "nt-no-leida" : ""}`}
+                  className={`tarjeta-notificacion ${!alerta.leido ? "no-leida" : ""}`}
                   onClick={() => handleNotificationClick(alerta.id)}
                   title="Marcar como leída / Ver detalles"
                 >
-                  <div className="nt-icon-placeholder"></div>
+                  <div className="icono-placeholder"></div>
 
-                  <div className="nt-item-info">
+                  <div className="info-notificacion">
                     <h3>{alerta.titulo}</h3>
-                    <p className="nt-item-description">{alerta.descripcion}</p>
+                    <p className="descripcion-notificacion">{alerta.descripcion}</p>
                   </div>
 
-                  <div className="nt-item-meta">
-                    <span className="nt-time-text">{alerta.tiempo}</span>
-                    {!alerta.leido && <span className="nt-unread-dot"></span>}
+                  <div className="meta-notificacion">
+                    <span className="texto-tiempo">{alerta.tiempo}</span>
+                    {!alerta.leido && <span className="punto-no-leida"></span>}
                   </div>
                 </button>
               ))}
