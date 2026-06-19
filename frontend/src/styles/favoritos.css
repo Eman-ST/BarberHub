@@ -5,7 +5,7 @@
   --fav-gold-border: #edd193;
   --fav-text-white: #ffffff;
   --fav-text-main: #000000;
-  --fav-text-muted: #555555; /* Un tono ligeramente más oscuro para mejorar el contraste */
+  --fav-text-muted: #555555;
   --fav-focus-blue: #2196f3;
   
   /* Estados */
@@ -13,18 +13,17 @@
   --fav-color-cerrado: #b91c1c;
 }
 
-.fav-dashboard {
+/* Panel general */
+.panel-favoritos {
   display: flex;
   min-height: 100vh;
   background-color: var(--fav-bg-main);
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
-/* ==========================================================================
-   1. SIDEBAR IZQUIERDO (MENU OSCURO ORIGINAL)
-   ========================================================================== */
-.fav-sidebar-left {
-  width: 250px; /* Un poco más ancho para equilibrar el nuevo tamaño general */
+/* Sidebar izquierdo */
+.sidebar-favoritos {
+  width: 250px;
   background-color: var(--fav-bg-sidebar);
   display: flex;
   flex-direction: column;
@@ -32,28 +31,29 @@
   box-sizing: border-box;
 }
 
-.fav-brand {
+.marca-favoritos {
   display: flex;
   align-items: center;
   padding: 0 20px;
   margin-bottom: 40px;
 }
 
-.fav-logo-img {
+.logo-favoritos {
   width: 42px;
   height: 42px;
   border-radius: 50%;
   margin-right: 12px;
 }
 
-.fav-brand h2 {
-  font-size: 1.2rem; /* Letras de marca sutilmente más grandes */
+.marca-favoritos h2 {
+  font-size: 1.2rem;
   letter-spacing: 1px;
   color: var(--fav-text-white);
   margin: 0;
 }
 
-.fav-nav-menu {
+/* Menú de navegación */
+.menu-favoritos {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -61,32 +61,32 @@
   flex: 1;
 }
 
-.fav-nav-btn {
+.btn-menu-favoritos {
   background: none;
   border: none;
   color: #aaaaaa;
   text-align: left;
-  padding: 14px 22px; /* Más área de click */
-  font-size: 1.05rem; /* Letras del menú principal más grandes */
+  padding: 14px 22px;
+  font-size: 1.05rem;
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.2s ease;
   font-weight: 500;
 }
 
-.fav-nav-btn:hover {
+.btn-menu-favoritos:hover {
   color: var(--fav-text-white);
   background-color: #222222;
 }
 
-.fav-nav-btn.activo {
+.btn-menu-favoritos.activo {
   background-color: var(--fav-gold-primary);
   color: #000000;
   font-weight: 700;
 }
 
-/* Perfil de Usuario en Sidebar */
-.fav-user-profile {
+/* Perfil de usuario */
+.perfil-favoritos {
   display: flex;
   align-items: center;
   padding: 20px;
@@ -94,7 +94,7 @@
   margin-top: auto;
 }
 
-.fav-avatar-placeholder {
+.avatar-favoritos {
   width: 48px;
   height: 48px;
   background-color: #f3d89d;
@@ -108,46 +108,44 @@
   margin-right: 12px;
 }
 
-.fav-user-info {
+.info-usuario-favoritos {
   display: flex;
   flex-direction: column;
 }
 
-.fav-user-name {
+.nombre-usuario-favoritos {
   color: var(--fav-text-white);
   font-weight: 600;
-  font-size: 1.05rem; /* Nombre de usuario más legible */
+  font-size: 1.05rem;
 }
 
-.fav-user-role {
+.rol-usuario-favoritos {
   color: #888888;
   font-size: 0.85rem;
   margin-top: 2px;
 }
 
-/* ==========================================================================
-   2. CONTENEDOR PRINCIPAL (ENTORNO BLANCO EXPENDIDO)
-   ========================================================================== */
-.fav-main-wrapper {
+/* Contenedor principal */
+.contenido-favoritos {
   flex: 1;
   display: flex;
   flex-direction: column;
   background-color: var(--fav-bg-main);
 }
 
-.fav-main-header {
+.encabezado-favoritos {
   background-color: #000000;
   padding: 25px 40px;
 }
 
-.fav-main-header h1 {
-  font-size: 1.6rem; /* Título principal más grande */
+.encabezado-favoritos h1 {
+  font-size: 1.6rem;
   font-weight: 600;
   margin: 0;
   color: var(--fav-text-white);
 }
 
-.fav-content-layout {
+.layout-favoritos {
   flex: 1;
   padding: 40px;
   background-color: var(--fav-bg-main);
@@ -155,131 +153,129 @@
   justify-content: center;
 }
 
-.fav-cards-container {
+.tarjetas-favoritos {
   display: flex;
   flex-direction: column;
   gap: 25px;
   width: 100%;
-  max-width: 1200px; /* Aumentado de 900px a 1200px para extender los recuadros horizontalmente */
+  max-width: 1200px;
 }
 
-/* Tarjeta Base Favoritos Extendida */
-.fav-card-item {
+/*  Tarjeta de barbería */
+.tarjeta-favorito {
   display: flex;
   align-items: center;
   background-color: var(--fav-bg-main);
   border: 1.5px solid var(--fav-gold-border);
   border-radius: 18px;
-  padding: 24px 30px; /* Mayor padding interno para dar aire al diseño expandido */
+  padding: 24px 30px;
   gap: 30px;
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
 }
 
-/* Estado Seleccionado / Enfocado */
-.fav-card-item.seleccionada {
+.tarjeta-favorito.seleccionada {
   border: 2.5px solid var(--fav-focus-blue);
   box-shadow: 0 6px 20px rgba(33, 150, 243, 0.12);
 }
 
-/* Imagen proporcional al nuevo tamaño */
-.fav-item-img {
-  width: 130px; /* Escalado de 100px a 130px */
-  height: 90px;  /* Escalado de 70px a 90px */
+.imagen-favorito {
+  width: 130px;
+  height: 90px;
   object-fit: cover;
   border-radius: 10px;
 }
 
-.fav-item-info {
+.info-favorito {
   flex: 1;
 }
 
-.fav-item-info h3 {
-  font-size: 1.3rem; /* Título de la barbería más grande */
+.info-favorito h3 {
+  font-size: 1.3rem;
   font-weight: 700;
   margin: 0 0 8px 0;
   color: var(--fav-text-main);
 }
 
-.fav-item-address {
-  font-size: 1rem; /* Dirección más grande y legible */
+.direccion-favorito {
+  font-size: 1rem;
   color: var(--fav-text-muted);
   margin: 0 0 10px 0;
 }
 
-/* Indicadores de Estado */
-.fav-status-row {
+/* Estado abierto/cerrado */
+.estado-favorito {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.fav-status-dot {
-  width: 14px; /* Ligeramente más grandes */
+.punto-estado {
+  width: 14px;
   height: 14px;
   border-radius: 50%;
 }
 
-.fav-status-dot.abierto {
+.punto-estado.abierto {
   background-color: var(--fav-color-abierto);
 }
 
-.fav-status-dot.cerrado {
+.punto-estado.cerrado {
   background-color: var(--fav-color-cerrado);
 }
 
-.fav-status-text {
-  font-size: 0.95rem; /* Texto de estado más grande */
+.texto-estado {
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--fav-text-main);
 }
 
-/* Bloque derecho: Calificación y Botones */
-.fav-item-actions {
+/* Acciones a la derecha */
+.acciones-favorito {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 20px; /* Mayor separación vertical */
+  gap: 20px;
 }
 
-.fav-rating-number {
-  font-size: 1.8rem; /* Número de calificación más imponente */
+.calificacion-favorito {
+  font-size: 1.8rem;
   font-weight: 700;
   color: #c9a054;
   line-height: 1;
 }
 
-.fav-buttons-group {
+.grupo-botones-favorito {
   display: flex;
   gap: 15px;
 }
 
-/* Estilos de botones de acción más robustos */
-.fav-btn-action {
+/* Botones de acción */
+.btn-favorito {
   border: none;
-  padding: 10px 24px; /* Mayor relleno interno */
+  padding: 10px 24px;
   border-radius: 20px;
-  font-size: 0.95rem; /* Texto de los botones más grande */
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.fav-btn-gold {
+.btn-dorado {
   background-color: var(--fav-gold-primary);
   color: #000000;
 }
 
-.fav-btn-gold:hover {
+.btn-dorado:hover {
   background-color: #edd193;
 }
 
-.fav-btn-gray {
+.btn-gris {
   background-color: #e8e8ed;
   color: var(--fav-text-main);
 }
 
-.fav-btn-gray:hover {
+.btn-gris:hover {
   background-color: #dcdce1;
 }

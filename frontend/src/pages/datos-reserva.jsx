@@ -3,13 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconCircleCheck } from "@tabler/icons-react";
 import { BARBERIA_DEMO } from "../data/barberia-demo";
 import { apiFetch } from "../utils/api";
-import {
-  formatearHorarioCita,
-  keyAFecha,
-} from "../utils/fecha";
+import { formatearHorarioCita, keyAFecha } from "../utils/fecha";
 import PageNavbar from "../components/page-navbar";
 import "../styles/datos-reserva.css";
 
+/* Datos demo de reserva*/
 const RESERVA_DEMO = {
   establecimiento: BARBERIA_DEMO.nombre,
   servicio: BARBERIA_DEMO.servicio,
@@ -19,10 +17,12 @@ const RESERVA_DEMO = {
   hora: "09:00",
 };
 
+/* Componente principal: Datos de Reserva */
 export default function DatosReserva() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
+  // Datos de la reserva: se toman del state o del demo
   const reserva = {
     barberiaId: state?.barberiaId ?? "urban-cuts",
     establecimiento: state?.establecimiento ?? RESERVA_DEMO.establecimiento,
@@ -36,11 +36,13 @@ export default function DatosReserva() {
   const fechaObj = keyAFecha(reserva.fecha);
   const horarioTexto = formatearHorarioCita(fechaObj, reserva.hora);
 
+  // Estados locales
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState("");
 
+  // Acción: confirmar cita
   const confirmar = async (e) => {
     e.preventDefault();
     if (!nombre.trim() || !telefono.trim()) {
@@ -81,23 +83,26 @@ export default function DatosReserva() {
   };
 
   return (
-    <div className="dr-page">
+    <div className="pagina-reserva">
       <PageNavbar />
-      <div className="dr-body">
-        <div className="dr-card">
-          <div className="dr-icon-wrap" aria-hidden>
-            {/* Redimensionado a 48 para que luzca imponente como el check de anticipo */}
+      <div className="contenido-reserva">
+        <div className="tarjeta-reserva">
+          
+          {/* Icono superior */}
+          <div className="icono-reserva" aria-hidden>
             <IconCircleCheck size={48} stroke={2} color="#fff" />
           </div>
 
-          <h1 className="dr-title">Datos de Reserva</h1>
-          <p className="dr-subtitle">
+          {/* Título y subtítulo */}
+          <h1 className="titulo-reserva">Datos de Reserva</h1>
+          <p className="subtitulo-reserva">
             No necesitas cuenta. Completa los datos para agendar en el local.
           </p>
 
-          <form className="dr-form" onSubmit={confirmar}>
+          {/* Formulario */}
+          <form className="formulario-reserva" onSubmit={confirmar}>
             <input
-              className="dr-input"
+              className="input-reserva"
               type="text"
               placeholder="Tu Nombre Completo"
               value={nombre}
@@ -108,7 +113,7 @@ export default function DatosReserva() {
               required
             />
             <input
-              className="dr-input"
+              className="input-reserva"
               type="tel"
               placeholder="Teléfono / WhatsApp"
               value={telefono}
@@ -119,40 +124,43 @@ export default function DatosReserva() {
               required
             />
 
-            <div className="dr-summary">
-              <div className="dr-summary-row">
-                <span className="dr-label">ESTABLECIMIENTO</span>
-                <span className="dr-value">{reserva.establecimiento}</span>
+            {/* Resumen de la cita */}
+            <div className="resumen-reserva">
+              <div className="fila-resumen">
+                <span className="etiqueta">ESTABLECIMIENTO</span>
+                <span className="valor">{reserva.establecimiento}</span>
               </div>
-              <div className="dr-summary-row">
-                <span className="dr-label">HORARIO</span>
-                <span className="dr-value">{horarioTexto}</span>
+              <div className="fila-resumen">
+                <span className="etiqueta">HORARIO</span>
+                <span className="valor">{horarioTexto}</span>
               </div>
-              <div className="dr-summary-row">
-                <span className="dr-label">SERVICIO</span>
-                <span className="dr-value">{reserva.servicio}</span>
+              <div className="fila-resumen">
+                <span className="etiqueta">SERVICIO</span>
+                <span className="valor">{reserva.servicio}</span>
               </div>
-              <div className="dr-summary-row highlight">
-                <span className="dr-label">TOTAL ESTIMADO</span>
-                <span className="dr-value price">
+              <div className="fila-resumen destacado">
+                <span className="etiqueta">TOTAL ESTIMADO</span>
+                <span className="valor">
                   ${reserva.precio} {reserva.moneda}
                 </span>
               </div>
             </div>
 
-          {error && <p className="dr-error">{error}</p>}
+            {/* Mensaje de error */}
+            {error && <p className="error-reserva">{error}</p>}
 
-            <div className="dr-actions">
+            {/* Botones de acción */}
+            <div className="acciones-reserva">
               <button
                 type="button"
-                className="dr-btn-cancel"
+                className="boton-cancelar"
                 onClick={() => navigate("/agenda-local")}
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="dr-btn-confirm"
+                className="boton-confirmar"
                 disabled={enviando}
               >
                 {enviando ? "Confirmando..." : "Confirmar Cita"}

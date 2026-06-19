@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// Importación exacta con el nombre en minúsculas que me enseñaste:
 import "../styles/historial-citas.css";
 
-// Mock de datos basado en tu interfaz gráfica
 const citasData = [
   {
     id: 1,
@@ -18,11 +16,11 @@ const citasData = [
     estado: "Pendiente", 
     duracion: "1 Hora",
     puntosGanados: "+10 pts",
-    miCalificacion: "Excelente servicio, buen corte... Carlos siempre deja todo impecable y el lugar esta muy limpio"
+    miCalificacion: "Excelente servicio, buen corte... Carlos siempre deja todo impecable y el lugar está muy limpio"
   },
   {
     id: 2,
-    servicio: "Corte Clasico",
+    servicio: "Corte Clásico",
     barbero: "Carlos Reyes",
     barberia: "Barbería La Reforma",
     direccion: "Av. Sor Juana 142 0.8km",
@@ -38,7 +36,7 @@ const citasData = [
   },
   {
     id: 3,
-    servicio: "Corte Clasico",
+    servicio: "Corte Clásico",
     barbero: "Miguel G",
     barberia: "Barbería La Navaja",
     direccion: "Calle Benito Juárez 405",
@@ -54,42 +52,39 @@ const citasData = [
   }
 ];
 
-// Mantenemos el nombre de la función en Mayúscula (Obligatorio para React)
 export default function HistorialCitas() {
   const [filtroEstado, setFiltroEstado] = useState("Todas");
   const [citaSeleccionada, setCitaSeleccionada] = useState(citasData[0]);
   const [menuActivo, setMenuActivo] = useState("Historial");
 
-  // Filtrar citas según el botón seleccionado
   const citasFiltradas = citasData.filter((cita) => {
     if (filtroEstado === "Todas") return true;
     if (filtroEstado === "Canceladas") return cita.estado === "Rechazada";
     return cita.estado === filtroEstado;
   });
 
-  // Helper para asignar la clase CSS del badge de estado
   const getBadgeClass = (estado) => {
     switch (estado) {
-      case "Pendiente": return "hc-status-pendiente";
-      case "Completada": return "hc-status-completada";
-      case "Rechazada": return "hc-status-rechazada";
+      case "Pendiente": return "estado-pendiente";
+      case "Completada": return "estado-completada";
+      case "Rechazada": return "estado-rechazada";
       default: return "";
     }
   };
 
   return (
-    <div className="hc-dashboard">
-      {/* 1. Sidebar de Navegación Lateral */}
-      <aside className="hc-sidebar-left">
-        <div className="hc-brand">
-          <img src="/barberhublogo.jpg" alt="Barber Hub" className="hc-logo-img" />
+    <div className="panel-historial">
+      {/* Sidebar de navegación */}
+      <aside className="sidebar-historial">
+        <div className="marca-historial">
+          <img src="/barberhublogo.jpg" alt="Barber Hub" className="logo-historial" />
           <h2>BARBER HUB</h2>
         </div>
-        <nav className="hc-nav-menu">
+        <nav className="menu-historial">
           {["Explorar", "Mis citas", "Historial", "Favoritos", "Notificaciones", "Ajustes"].map((item) => (
             <button
               key={item}
-              className={`hc-nav-btn ${menuActivo === item ? "activo" : ""}`}
+              className={`btn-menu-historial ${menuActivo === item ? "activo" : ""}`}
               onClick={() => setMenuActivo(item)}
             >
               {item}
@@ -98,38 +93,37 @@ export default function HistorialCitas() {
         </nav>
       </aside>
 
-      {/* Contenedor Principal Derecho */}
-      <div className="hc-main-wrapper">
-        {/* Header Superior */}
-        <header className="hc-main-header">
+      {/* Contenedor principal */}
+      <div className="contenido-historial">
+        <header className="encabezado-historial">
           <h1>Historial de citas</h1>
         </header>
 
-        <div className="hc-content-layout">
-          {/* 2. Sección Central: Métricas, Filtros y Lista */}
-          <main className="hc-center-content">
-            {/* Tarjetas de Resumen (Métricas) */}
-            <div className="hc-summary-cards">
-              <div className="hc-card">
-                <span className="hc-card-number text-gold">14</span>
-                <span className="hc-card-label">Total visitas</span>
+        <div className="layout-historial">
+          {/* Sección central */}
+          <main className="contenido-central-historial">
+            {/* Tarjetas resumen */}
+            <div className="tarjetas-resumen-historial">
+              <div className="tarjeta-resumen">
+                <span className="numero-resumen texto-dorado">14</span>
+                <span className="etiqueta-resumen">Total visitas</span>
               </div>
-              <div className="hc-card">
-                <span className="hc-card-number text-gold">$ 1,480</span>
-                <span className="hc-card-label">Gastado Total</span>
+              <div className="tarjeta-resumen">
+                <span className="numero-resumen texto-dorado">$ 1,480</span>
+                <span className="etiqueta-resumen">Gastado Total</span>
               </div>
-              <div className="hc-card">
-                <span className="hc-card-number">4.9</span>
-                <span className="hc-card-label">Calificación dada</span>
+              <div className="tarjeta-resumen">
+                <span className="numero-resumen">4.9</span>
+                <span className="etiqueta-resumen">Calificación dada</span>
               </div>
             </div>
 
-            {/* Filtros de Citas */}
-            <div className="hc-filters">
+            {/* Filtros */}
+            <div className="filtros-historial">
               {["Todas", "Completadas", "Canceladas", "Pendientes"].map((status) => (
                 <button
                   key={status}
-                  className={`hc-filter-btn ${filtroEstado === status ? "activo" : ""}`}
+                  className={`btn-filtro-historial ${filtroEstado === status ? "activo" : ""}`}
                   onClick={() => setFiltroEstado(status)}
                 >
                   {status}
@@ -137,28 +131,28 @@ export default function HistorialCitas() {
               ))}
             </div>
 
-            {/* Listado de Citas */}
-            <div className="hc-appointments-list">
+            {/* Lista de citas */}
+            <div className="lista-citas-historial">
               {citasFiltradas.map((cita) => (
-                <div key={cita.id} className="hc-appointment-item">
-                  <img src={cita.imagen} alt={cita.barberia} className="hc-item-img" />
+                <div key={cita.id} className="item-cita-historial">
+                  <img src={cita.imagen} alt={cita.barberia} className="imagen-cita" />
                   
-                  <div className="hc-item-info">
-                    <h3>{cita.servicio} . {cita.barbero}</h3>
-                    <p>{cita.barberia} . {cita.tiempo}</p>
+                  <div className="info-cita">
+                    <h3>{cita.servicio} · {cita.barbero}</h3>
+                    <p>{cita.barberia} · {cita.tiempo}</p>
                   </div>
 
-                  <div className="hc-item-actions">
-                    <span className="hc-item-price">${cita.precio}</span>
-                    <span className="hc-item-date">{cita.fecha}</span>
-                    <div className="hc-actions-row">
+                  <div className="acciones-cita">
+                    <span className="precio-cita">${cita.precio}</span>
+                    <span className="fecha-cita">{cita.fecha}</span>
+                    <div className="fila-acciones">
                       <button 
-                        className="hc-btn-details"
+                        className="btn-detalle-cita"
                         onClick={() => setCitaSeleccionada(cita)}
                       >
                         Ver detalle
                       </button>
-                      <span className={`hc-status-badge ${getBadgeClass(cita.estado)}`}>
+                      <span className={`badge-estado ${getBadgeClass(cita.estado)}`}>
                         {cita.estado}
                       </span>
                     </div>
@@ -166,21 +160,21 @@ export default function HistorialCitas() {
                 </div>
               ))}
               {citasFiltradas.length === 0 && (
-                <p className="hc-empty-message">No se encontraron citas en esta categoría.</p>
+                <p className="mensaje-vacio">No se encontraron citas en esta categoría.</p>
               )}
             </div>
           </main>
 
-          {/* 3. Sidebar Derecho: Detalle de Cita */}
+          {/* Sidebar derecho: detalle de cita */}
           {citaSeleccionada && (
-            <aside className="hc-sidebar-right">
-              <div className="hc-detail-box">
-                <h3 className="hc-detail-title">Detalle de cita</h3>
-                <p className="hc-detail-timestamp">{citaSeleccionada.fecha} {citaSeleccionada.hora}</p>
+            <aside className="sidebar-detalle">
+              <div className="detalle-cita">
+                <h3 className="titulo-detalle">Detalle de cita</h3>
+                <p className="timestamp-detalle">{citaSeleccionada.fecha} {citaSeleccionada.hora}</p>
 
-                {/* Info Barbería */}
-                <div className="hc-detail-shop-card">
-                  <span className="hc-icon-scissors">✂</span>
+                {/* Info barbería */}
+                <div className="tarjeta-barberia-detalle">
+                  <span className="icono-tijeras">✂</span>
                   <div>
                     <h4>{citaSeleccionada.barberia}</h4>
                     <p>{citaSeleccionada.direccion}</p>
@@ -188,48 +182,48 @@ export default function HistorialCitas() {
                 </div>
 
                 {/* Tabla de especificaciones */}
-                <div className="hc-detail-table">
-                  <div className="hc-table-row">
+                <div className="tabla-detalle">
+                  <div className="fila-detalle">
                     <span>Servicio</span>
                     <strong>{citaSeleccionada.servicio}</strong>
                   </div>
-                  <div className="hc-table-row">
+                  <div className="fila-detalle">
                     <span>Barbero</span>
                     <strong>{citaSeleccionada.barbero}</strong>
                   </div>
-                  <div className="hc-table-row">
+                  <div className="fila-detalle">
                     <span>Duración</span>
                     <strong>{citaSeleccionada.duracion}</strong>
                   </div>
-                  <hr className="hc-divider" />
-                  <div className="hc-table-row">
+                  <hr className="separador-detalle" />
+                  <div className="fila-detalle">
                     <span>Total Pagado</span>
-                    <strong className="text-gold">${citaSeleccionada.precio}</strong>
+                    <strong className="texto-dorado">${citaSeleccionada.precio}</strong>
                   </div>
-                  <div className="hc-table-row">
+                  <div className="fila-detalle">
                     <span>Puntos Ganados</span>
-                    <strong className="text-gold">{citaSeleccionada.puntosGanados}</strong>
+                    <strong className="texto-dorado">{citaSeleccionada.puntosGanados}</strong>
                   </div>
                 </div>
 
-                {/* Reseña/Calificación */}
-                {citaSeleccionada.miCalificacion && (
-                  <div className="hc-detail-review">
-                    <h5>Mi calificación</h5>
-                    <p>"{citaSeleccionada.miCalificacion}"</p>
-                  </div>
-                )}
+               {/* Reseña */}
+     {citaSeleccionada.miCalificacion && (
+      <div className="reseña-detalle">
+         <h5>Mi calificación</h5>
+        <p>"{citaSeleccionada.miCalificacion}"</p>
+  </div>
+)}
 
-                {/* Botones de acción inferiores */}
-                <div className="hc-detail-actions">
-                  <button className="hc-btn-rebook">Volver a agendar</button>
-                  <button className="hc-btn-go-shop">Ver barbería</button>
-                </div>
-              </div>
-            </aside>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+/* Botones de acción inferiores */
+<div className="acciones-detalle">
+  <button className="btn-reagendar">Volver a agendar</button>
+  <button className="btn-ver-barberia">Ver barbería</button>
+</div>
+</div>
+</aside>
+)}
+</div>
+</div>
+</div>
+);
 }

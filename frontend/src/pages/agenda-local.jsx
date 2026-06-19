@@ -52,39 +52,39 @@ export default function AgendaLocal() {
   };
 
   return (
-    <div className="al-page-container">
+    <div className="pagina-agenda">
       {/* Encabezado Superior */}
-      <header className="al-main-header">
-        <div className="al-brand-info">
-          <img src="/barberhublogo.jpg" alt="Logo" className="al-barber-logo" />
-          <div className="al-brand-text">
+      <header className="encabezado-agenda">
+        <div className="info-marca">
+          <img src="/barberhublogo.jpg" alt="Logo" className="logo-barberia" />
+          <div className="texto-marca">
             <h2>URBAN CUTS</h2>
             <span>Barbería</span>
           </div>
         </div>
-        <h1 className="al-header-title">Agenda tu próximo corte</h1>
+        <h1 className="titulo-agenda">Agenda tu próximo corte</h1>
       </header>
 
       {/* Contenido Principal */}
-      <main className="al-content-layout">
+      <main className="contenido-agenda">
         
         {/* Columna Izquierda: Calendario */}
-        <section className="al-calendar-section">
-          <h3 className="al-month-title">MAYO 2026</h3>
+        <section className="seccion-calendario">
+          <h3 className="titulo-mes">MAYO 2026</h3>
           
-          <div className="al-calendar-grid">
+          <div className="grid-calendario">
             {["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((d) => (
-              <div key={d} className="al-weekday-header">{d}</div>
+              <div key={d} className="encabezado-dia">{d}</div>
             ))}
 
             {diasMayo.map((dia, index) => {
-              if (dia === "") return <div key={`empty-${index}`} className="al-day-cell empty"></div>;
+              if (dia === "") return <div key={`empty-${index}`} className="celda-dia vacia"></div>;
               
               const esSeleccionado = diaSeleccionado === dia;
               return (
                 <div
                   key={`dia-${dia}`}
-                  className={`al-day-cell ${esSeleccionado ? "active" : ""}`}
+                  className={`celda-dia ${esSeleccionado ? "activo" : ""}`}
                   onClick={() => setDiaSeleccionado(dia)}
                 >
                   {dia}
@@ -95,10 +95,10 @@ export default function AgendaLocal() {
         </section>
 
         {/* Columna Derecha: Horarios Disponibles */}
-        <section className="al-hours-section">
-          <h3 className="al-hours-title">HORARIOS DISPONIBLES</h3>
+        <section className="seccion-horarios">
+          <h3 className="titulo-horarios">HORARIOS DISPONIBLES</h3>
 
-          <div className="al-hours-grid">
+          <div className="grid-horarios">
             {horariosBase.map((item) => {
               const esElSeleccionadoActual = horaSeleccionada === item.hora;
               
@@ -113,7 +113,7 @@ export default function AgendaLocal() {
               return (
                 <button
                   key={item.hora}
-                  className={`al-hour-btn ${claseEstado}`}
+                  className={`boton-hora ${claseEstado}`}
                   disabled={item.ocupado}
                   onClick={() => setHoraSeleccionada(item.hora)}
                 >
@@ -124,22 +124,22 @@ export default function AgendaLocal() {
           </div>
 
           {/* Código de Colores / Leyenda */}
-          <div className="al-legend-box">
-            <div className="al-legend-item">
-              <span className="al-dot legend-seleccionado"></span>
+          <div className="caja-leyenda">
+            <div className="item-leyenda">
+              <span className="punto-leyenda seleccionado"></span>
               <span>Seleccionado</span>
             </div>
-            <div className="al-legend-item">
-              <span className="al-dot legend-disponible"></span>
+            <div className="item-leyenda">
+              <span className="punto-leyenda disponible"></span>
               <span>Disponible</span>
             </div>
-            <div className="al-legend-item">
-              <span className="al-dot legend-ocupado"></span>
+            <div className="item-leyenda">
+              <span className="punto-leyenda ocupado"></span>
               <span>Ocupado</span>
             </div>
           </div>
 
-          <button className="al-btn-submit" onClick={handleContinuar}>
+          <button className="boton-continuar" onClick={handleContinuar}>
             Continuar
           </button>
         </section>

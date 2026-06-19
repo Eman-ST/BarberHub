@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/favoritos.css";
 
-// Mock de datos extraído exactamente de tu captura de pantalla
+// Mock de datos de barberías favoritas
 const favoritosData = [
   {
     id: 1,
@@ -13,7 +13,7 @@ const favoritosData = [
   },
   {
     id: 2,
-    nombre: "Barbería La Navaja clasica",
+    nombre: "Barbería La Navaja clásica",
     direccion: "Av. Sor Juana 142  0.8km",
     estado: "Abierto",
     calificacion: "4.8",
@@ -31,23 +31,24 @@ const favoritosData = [
 
 export default function Favoritos() {
   const [menuActivo, setMenuActivo] = useState("Favoritos");
-  // Almacenamos el ID de la tarjeta seleccionada (para el borde azul del item #2)
   const [tarjetaSeleccionada, setTarjetaSeleccionada] = useState(2);
 
   return (
-    <div className="fav-dashboard">
-      {/* Sidebar Izquierdo Oscuro */}
-      <aside className="fav-sidebar-left">
-        <div className="fav-brand">
-          <img src="/barberhublogo.jpg" alt="Barber Hub" className="fav-logo-img" />
+    <div className="panel-favoritos">
+      {/* Sidebar izquierdo oscuro */}
+      <aside className="sidebar-favoritos">
+        {/* Marca Barber Hub */}
+        <div className="marca-favoritos">
+          <img src="/barberhublogo.jpg" alt="Barber Hub" className="logo-favoritos" />
           <h2>BARBER HUB</h2>
         </div>
 
-        <nav className="fav-nav-menu">
+        {/* Menú de navegación */}
+        <nav className="menu-favoritos">
           {["Explorar", "Mis citas", "Historial", "Favoritos", "Notificaciones", "Ajustes"].map((item) => (
             <button
               key={item}
-              className={`fav-nav-btn ${menuActivo === item ? "activo" : ""}`}
+              className={`btn-menu-favoritos ${menuActivo === item ? "activo" : ""}`}
               onClick={() => setMenuActivo(item)}
             >
               {item}
@@ -55,49 +56,49 @@ export default function Favoritos() {
           ))}
         </nav>
 
-        {/* Perfil del Usuario en la parte inferior */}
-        <div className="fav-user-profile">
-          <div className="fav-avatar-placeholder">LM</div>
-          <div className="fav-user-info">
-            <span className="fav-user-name">Luis Méndez</span>
-            <span className="fav-user-role">Básico</span>
+        {/* Perfil del usuario en la parte inferior */}
+        <div className="perfil-favoritos">
+          <div className="avatar-favoritos">LM</div>
+          <div className="info-usuario-favoritos">
+            <span className="nombre-usuario-favoritos">Luis Méndez</span>
+            <span className="rol-usuario-favoritos">Básico</span>
           </div>
         </div>
       </aside>
 
-      {/* Contenedor Principal (Entorno Blanco) */}
-      <div className="fav-main-wrapper">
-        <header className="fav-main-header">
+      {/* Contenedor principal blanco */}
+      <div className="contenido-favoritos">
+        <header className="encabezado-favoritos">
           <h1>Favoritos</h1>
         </header>
 
-        <main className="fav-content-layout">
-          <div className="fav-cards-container">
+        <main className="layout-favoritos">
+          <div className="tarjetas-favoritos">
             {favoritosData.map((barberia) => (
               <div
                 key={barberia.id}
-                className={`fav-card-item ${tarjetaSeleccionada === barberia.id ? "seleccionada" : ""}`}
+                className={`tarjeta-favorito ${tarjetaSeleccionada === barberia.id ? "seleccionada" : ""}`}
                 onClick={() => setTarjetaSeleccionada(barberia.id)}
               >
-                {/* Imagen en miniatura */}
-                <img src={barberia.imagen} alt={barberia.nombre} className="fav-item-img" />
+                {/* Imagen miniatura */}
+                <img src={barberia.imagen} alt={barberia.nombre} className="imagen-favorito" />
 
-                {/* Detalles centrales */}
-                <div className="fav-item-info">
+                {/* Información central */}
+                <div className="info-favorito">
                   <h3>{barberia.nombre}</h3>
-                  <p className="fav-item-address">{barberia.direccion}</p>
-                  <div className="fav-status-row">
-                    <span className={`fav-status-dot ${barberia.estado.toLowerCase()}`}></span>
-                    <span className="fav-status-text">{barberia.estado}</span>
+                  <p className="direccion-favorito">{barberia.direccion}</p>
+                  <div className="estado-favorito">
+                    <span className={`punto-estado ${barberia.estado.toLowerCase()}`}></span>
+                    <span className="texto-estado">{barberia.estado}</span>
                   </div>
                 </div>
 
-                {/* Acciones del extremo derecho */}
-                <div className="fav-item-actions">
-                  <span className="fav-rating-number">{barberia.calificacion}</span>
-                  <div className="fav-buttons-group">
-                    <button className="fav-btn-action fav-btn-gold">Agendar</button>
-                    <button className="fav-btn-action fav-btn-gray">Ver barbería</button>
+                {/* Acciones a la derecha */}
+                <div className="acciones-favorito">
+                  <span className="calificacion-favorito">{barberia.calificacion}</span>
+                  <div className="grupo-botones-favorito">
+                    <button className="btn-favorito btn-dorado">Agendar</button>
+                    <button className="btn-favorito btn-gris">Ver barbería</button>
                   </div>
                 </div>
               </div>
