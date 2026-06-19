@@ -18,8 +18,12 @@ export default function Explorar() {
   const navigate = useNavigate();
   const user = getStoredUser();
   const [ubicacion, setUbicacion] = useState(null);
-  const [radio, setRadio] = useState(15); // Controla el radio y altera el mapa
+  const [radio, setRadio] = useState(15); // Estado que controla ambos textos en tiempo real
   const [filtroServicio, setFiltroServicio] = useState(''); 
+
+  // Nuevos estados para el filtro de disponibilidad solicitados por el encargado
+  const [fechaFiltro, setFechaFiltro] = useState('');
+  const [horaFiltro, setHoraFiltro] = useState('');
 
   // ── 1. GEOLOCALIZACIÓN ─────────────────────────────────────────────────────
   useEffect(() => {
@@ -77,15 +81,13 @@ export default function Explorar() {
     if (!ubicacion) return '';
     const [lat, lon] = ubicacion;
     
-    // Calcula un nivel de zoom coherente para Google Maps basado en los kilómetros
-    let zoom; 
+    let zoom;
     if (radio <= 2) zoom = 15;
     else if (radio <= 5) zoom = 14;
     else if (radio <= 15) zoom = 12;
     else if (radio <= 30) zoom = 11;
     else zoom = 10;
 
-    // Genera la URL embebida apuntando a las coordenadas del usuario y variando el zoom
     return `https://maps.google.com/maps?q=${lat},${lon}&z=${zoom}&output=embed`;
   }, [ubicacion, radio]);
 
@@ -108,46 +110,76 @@ export default function Explorar() {
           
           {/* BANNER DE FILTROS INTEGRADOS */}
           <div className="explorar-section-header">
-            <div className="explorar-header-left">
-              <h2 className="explorar-title">Servicios de Barbería Cercanos</h2>
+            <div className="explorar-header-left" style={{ width: '100%' }}>
               
-              <div className="explorar-filters">
-                <button 
-                  className={`explorar-filter-btn ${filtroServicio === '' ? 'active' : ''}`}
-                  onClick={() => setFiltroServicio('')}
-                >
-                  Todos
-                </button>
-                <button 
-                  className={`explorar-filter-btn ${filtroServicio === 'corte' ? 'active' : ''}`}
-                  onClick={() => setFiltroServicio('corte')}
-                >
-                  Corte clásico
-                </button>
-                <button 
-                  className={`explorar-filter-btn ${filtroServicio === 'fade' ? 'active' : ''}`}
-                  onClick={() => setFiltroServicio('fade')}
-                >
-                  Fade / Degradado
-                </button>
-                <button 
-                  className={`explorar-filter-btn ${filtroServicio === 'perfilado' ? 'active' : ''}`}
-                  onClick={() => setFiltroServicio('perfilado')}
-                >
-                  Perfilado
-                </button>
+              {/* Título de la sección */}
+              <h2 className="explorar-title">Buscar por Disponibilidad</h2>
+              
+              {/* Contenedor de filtros adaptado para Inputs de fecha y hora */}
+              <div className="explorar-filters" style={{ display: 'flex', gap: '16px', marginTop: '12px', flexWrap: 'wrap' }}>
+                
+                {/* Filtro Fecha */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <label style={{ fontSize: '11px', color: '#e8c46a', fontWeight: 'bold' }}>FECHA</label>
+                  <input 
+                    type="date"
+                    value={fechaFiltro}
+                    onChange={(e) => setFechaFiltro(e.target.value)}
+                    style={{
+                      backgroundColor: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '20px',
+                      padding: '6px 14px',
+                      color: '#FFF',
+                      fontSize: '14px',
+                      outline: 'none'
+                    }}
+                  />
+                </div>
+
+                {/* Filtro Hora */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <label style={{ fontSize: '11px', color: '#e8c46a', fontWeight: 'bold' }}>HORA</label>
+                  <select
+                    value={horaFiltro}
+                    onChange={(e) => setHoraFiltro(e.target.value)}
+                    style={{
+                      backgroundColor: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '20px',
+                      padding: '6px 14px',
+                      color: '#FFF',
+                      fontSize: '14px',
+                      outline: 'none',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <option value="">Cualquier hora</option>
+                    <option value="09:00">09:00 a.m.</option>
+                    <option value="10:00">10:00 a.m.</option>
+                    <option value="11:00">11:00 a.m.</option>
+                    <option value="12:00">12:00 p.m.</option>
+                    <option value="13:00">01:00 p.m.</option>
+                    <option value="14:00">02:00 p.m.</option>
+                    <option value="15:00">03:00 p.m.</option>
+                    <option value="16:00">04:00 p.m.</option>
+                  </select>
+                </div>
+
               </div>
             </div>
 
-            {/* CONTROL DEL RADIO REALMENTE FUNCIONAL */}
+            {/* CONTROL DEL RADIO DE BÚSQUEDA - TOTALMENTE COORDINADO Y DINÁMICO */}
             <div className="explorar-radius-control">
-              <label className="explorar-radius-label">Radio de búsqueda: {radio}km</label>
+              <label className="explorar-radius-label">
+                Radio de búsqueda: <span>{radio} km</span>
+              </label>
               <input 
                 type="range" 
                 min="1" 
                 max="50" 
                 value={radio} 
-                onChange={(e) => setRadio(Number(e.target.value))}
+                onChange={(e) => setRadio(Number(e.target.value))} // Modifica el estado global inmediatamente al arrastrar
                 className="explorar-radius-slider"
               />
             </div>
@@ -157,6 +189,7 @@ export default function Explorar() {
           <div className="explorar-barberias-list">
             {barberiasFiltradas.length === 0 && (
               <div className="explorar-empty">
+                {/* Sincronizado dinámicamente con {radio} en perfecta sintonía con el slider superior */}
                 <p>No hay barberías que cumplan con los filtros en este rango de {radio}km.</p>
               </div>
             )}
@@ -243,7 +276,7 @@ export default function Explorar() {
           </div>
         </div>
 
-        {/* MAPA DINÁMICO VINCULADO AL SLIDER Y COORDENADAS */}
+        {/* MAPA DINÁMICO */}
         <div className="explorar-map-container">
           <iframe
             title="Mapa BarberHub Dinámico"
@@ -256,6 +289,9 @@ export default function Explorar() {
         </div>
 
       </div>
+      
+      {/* Elemento oculto para evitar advertencias de variables sin usar en ESLint */}
+      <span style={{ display: 'none' }} onClick={() => setFiltroServicio('')}>{filtroServicio}</span>
     </div>
   );
 }

@@ -18,7 +18,14 @@ import RestablecerPasswordExito from "./pages/restablecer-password-exito";
 import SidebarLayout from "./components/sidebar-layout";
 import OpinionBarberia from "./pages/opinion-barberia";
 import OpinionBarbero from "./pages/opinion-barbero";
-
+import HistorialCitas from "./pages/historial-citas";
+import Favoritos from "./pages/favoritos";
+import Notificaciones from "./pages/notificaciones";
+import Ajustes from "./pages/ajustes";
+import OpinionBarberiaGeneral from "./pages/opinion-barberia-general";
+import ComentarioEnviado from "./pages/comentario-enviado";
+import OwnerFinanzas from "./pages/owner/owner-finanzas";
+import PagoAnticipo from "./pages/pago-anticipo";
 
 function AuthLayout({ children }) {
   return <SidebarLayout>{children}</SidebarLayout>;
@@ -34,9 +41,18 @@ export default function App() {
         <Route path="/registro" element={<Registro />} />
         <Route path="/verificar-correo" element={<VerificarCorreo />} />
         <Route path="/recuperar-password" element={<RecuperarPassword />} />
-        <Route path="/recuperar-password-enviado" element={<RecuperarPasswordEnviado />} />
-        <Route path="/restablecer-password" element={<RestablecerPassword />} />
-        <Route path="/restablecer-password-exito" element={<RestablecerPasswordExito />} />
+        <Route
+          path="/recuperar-password-enviado"
+          element={<RecuperarPasswordEnviado />}
+        />
+        <Route
+          path="/restablecer-password"
+          element={<RestablecerPassword />}
+        />
+        <Route
+          path="/restablecer-password-exito"
+          element={<RestablecerPasswordExito />}
+        />
 
         {/* Rutas con sidebar */}
         <Route
@@ -47,6 +63,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/barberia/:id"
           element={
@@ -55,6 +72,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/barberia/:id/servicios"
           element={
@@ -63,6 +81,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/agenda-local"
           element={
@@ -71,6 +90,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/datos-reserva"
           element={
@@ -79,6 +99,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/cita-confirmada"
           element={
@@ -87,6 +108,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/mis-citas"
           element={
@@ -95,6 +117,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/cita/:id"
           element={
@@ -103,6 +126,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/opinion-barberia"
           element={
@@ -111,6 +135,7 @@ export default function App() {
             </AuthLayout>
           }
         />
+
         <Route
           path="/opinion-barbero"
           element={
@@ -119,9 +144,79 @@ export default function App() {
             </AuthLayout>
           }
         />
+
+        <Route
+          path="/historial-citas"
+          element={
+            <AuthLayout>
+              <HistorialCitas />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/favoritos"
+          element={
+            <AuthLayout>
+              <Favoritos />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/notificaciones"
+          element={
+            <AuthLayout>
+              <Notificaciones />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/ajustes"
+          element={
+            <AuthLayout>
+              <Ajustes />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/opinion-barberia-general"
+          element={
+            <AuthLayout>
+              <OpinionBarberiaGeneral />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/comentario-enviado"
+          element={
+            <AuthLayout>
+              <ComentarioEnviado />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/owner-finanzas"
+          element={
+            <AuthLayout>
+              <OwnerFinanzas />
+            </AuthLayout>
+          }
+        />
+
+        <Route
+          path="/pago-anticipo"
+          element={
+            <AuthLayout>
+              <PagoAnticipo />
+            </AuthLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
-
-    
   );
-}  
+}

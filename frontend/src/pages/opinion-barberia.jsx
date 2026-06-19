@@ -48,7 +48,7 @@ export default function OpinionBarberia() {
     <div className="bp-page">
       {/* Header */}
       <header className="bp-header">
-      <img src="/barberhublogo.jpg" alt="Barber Hub" className="bp-logo" />
+        <img src="/logo.png" alt="Barber Hub" className="bp-logo" />
       </header>
 
       <div className="bp-content">
@@ -116,6 +116,20 @@ export default function OpinionBarberia() {
             <Estrellas rating={3} />
           </button>
 
+          <button
+            className={`bp-filtro-estrellas ${filtroEstrellas === 2 ? "activo" : ""}`}
+            onClick={() => setFiltroEstrellas(2)}
+          >
+            <Estrellas rating={2} />
+          </button>
+
+          <button
+            className={`bp-filtro-estrellas ${filtroEstrellas === 1 ? "activo" : ""}`}
+            onClick={() => setFiltroEstrellas(1)}
+          >
+            <Estrellas rating={1} />
+          </button>
+
           <button className="bp-orden-btn">
             Más recientes <span className="bp-chevron">&gt;</span>
           </button>
@@ -141,9 +155,6 @@ export default function OpinionBarberia() {
         {/* Botones de acción */}
         <div className="bp-acciones">
           <button className="bp-btn bp-btn-regresar">Regresar</button>
-          <button className="bp-btn bp-btn-opinion">
-            <span className="bp-icono-chat">💬</span> Dejar opinión
-          </button>
         </div>
       </div>
     </div>

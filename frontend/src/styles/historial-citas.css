@@ -1,0 +1,486 @@
+:root {
+  /* Paleta de colores unificada y limpia */
+  --bg-sidebar: #121212;              
+  --bg-main-light: #ffffff; /* Ajustado a blanco puro para hacer juego con favoritos */
+  --bg-card-white: #ffffff;            
+  --gold-primary: #e5be6b;             
+  --gold-light: #fdf8ed;               
+  --text-main: #000000;     /* Negro puro para contrastar mejor con los textos grandes */
+  --text-muted: #555555;    /* Gris con mejor contraste y legibilidad */
+  --gray-border: #e4e4e7;   /* Corregido: Variable añadida para pintar los bordes de las tarjetas */
+  
+  /* Estados visuales semitransparentes estilo premium */
+  --status-pending: #f59e0b;
+  --status-success: #10b981;
+  --status-danger: #ea5455;
+}
+
+/* Base de la Aplicación */
+.hc-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-main-light);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   1. SIDEBAR IZQUIERDO (MENU OSCURO ORIGINAL)
+   ========================================================================== */
+.hc-sidebar-left {
+  width: 250px; /* Ancho ajustado a la escala grande de favoritos */
+  background-color: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+  box-sizing: border-box;
+}
+
+.hc-brand {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.hc-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.hc-brand h2 {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.hc-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 15px;
+}
+
+.hc-nav-btn {
+  background: none;
+  border: none;
+  color: #aaaaaa;
+  text-align: left;
+  padding: 14px 22px;
+  font-size: 1.05rem; /* Letras del menú principal más grandes */
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+
+.hc-nav-btn:hover {
+  color: #ffffff;
+  background-color: #222222;
+}
+
+.hc-nav-btn.activo {
+  background-color: var(--gold-primary);
+  color: #000000;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   CONTENEDOR DERECHO (ENTORNO BLANCO EXPENDIDO)
+   ========================================================================== */
+.hc-main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main-light);
+}
+
+/* NUEVA CABECERA: Bloque negro con letras blancas idéntico a Favoritos */
+.hc-main-header {
+  background-color: #000000; 
+  padding: 25px 40px;
+}
+
+.hc-main-header h1 {
+  font-size: 1.6rem; /* Título de sección más grande */
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff; /* Texto blanco sobre fondo negro */
+}
+
+/* Layout del Contenido */
+.hc-content-layout {
+  flex: 1;
+  display: flex;
+  background-color: var(--bg-main-light);
+  padding: 40px;
+  gap: 35px;
+}
+
+/* ==========================================================================
+   2. SECCIÓN CENTRAL (TARJETAS Y FILAS DE CITAS)
+   ========================================================================== */
+.hc-center-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px; /* Aumentado a 1200px para la extensión horizontal */
+}
+
+/* Tarjetas Métricas Claras Expandidas */
+.hc-summary-cards {
+  display: flex;
+  gap: 25px;
+}
+
+.hc-card {
+  flex: 1;
+  background-color: var(--bg-card-white);
+  border: 1.5px solid var(--gray-border); /* Borde sutil visible */
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.hc-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-primary);
+}
+
+.hc-card-number {
+  font-size: 1.9rem; /* Números de métricas más imponentes */
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.hc-card-number.text-gold {
+  color: #c9a054; 
+}
+
+.hc-card-label {
+  font-size: 0.85rem; /* Etiquetas más legibles */
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* Filtros de Estado Estilo Pastilla Grandes */
+.hc-filters {
+  display: flex;
+  gap: 15px;
+}
+
+.hc-filter-btn {
+  background-color: #f0f0f2;
+  border: none;
+  color: #55555a;
+  padding: 10px 26px; /* Más relleno horizontal */
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95rem; /* Texto de los filtros más grande */
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.hc-filter-btn:hover {
+  background-color: #e4e4e7;
+  color: var(--text-main);
+}
+
+.hc-filter-btn.activo {
+  background-color: var(--gold-primary);
+  color: #000000;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(229, 190, 107, 0.25);
+}
+
+/* Listado de Citas */
+.hc-appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.hc-appointments-list::-webkit-scrollbar {
+  width: 6px;
+}
+.hc-appointments-list::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 10px;
+}
+
+/* Item de la Fila de Cita Extendida */
+.hc-appointment-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-card-white);
+  border: 1.5px solid var(--gray-border);
+  border-radius: 18px;
+  padding: 24px 30px; /* Aumentado igual que en Favoritos */
+  gap: 30px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.hc-appointment-item:hover {
+  border-color: rgba(229, 190, 107, 0.6);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.hc-item-img {
+  width: 130px; /* Sincronizado a 130px */
+  height: 90px;  /* Sincronizado a 90px */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.hc-item-info {
+  flex: 1;
+}
+
+.hc-item-info h3 {
+  font-size: 1.3rem; /* Título del servicio más grande */
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--text-main);
+}
+
+.hc-item-info p {
+  font-size: 1rem; /* Subtexto e información más grandes */
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.hc-item-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.hc-item-price {
+  font-weight: 700;
+  color: #c9a054;
+  font-size: 1.3rem; /* Precio con mayor jerarquía visual */
+}
+
+.hc-item-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.hc-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 4px;
+}
+
+/* Botón de Detalles Robusto */
+.hc-btn-details {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hc-btn-details:hover {
+  background-color: #333333;
+}
+
+/* Badges de Estado Grandes */
+.hc-status-badge {
+  font-size: 0.85rem; /* Texto interno más grande */
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 18px;
+  min-width: 85px;
+  text-align: center;
+}
+
+.hc-status-pendiente {
+  background-color: rgba(245, 158, 11, 0.12);
+  color: var(--status-pending);
+}
+
+.hc-status-completada {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: var(--status-success);
+}
+
+.hc-status-rechazada {
+  background-color: rgba(234, 84, 85, 0.12);
+  color: var(--status-danger);
+}
+
+/* ==========================================================================
+   3. SIDEBAR DERECHO (DETALLE LATERAL PROPORCIONAL)
+   ========================================================================== */
+.hc-sidebar-right {
+  width: 360px; /* Un poco más ancho para equilibrar el espacio horizontal */
+}
+
+.hc-detail-box {
+  background-color: var(--bg-card-white);
+  border: 1.5px solid var(--gray-border);
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.hc-detail-title {
+  font-size: 1.3rem; /* Título del detalle más grande */
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--text-main);
+}
+
+.hc-detail-timestamp {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* Mini Tarjeta de Barbería */
+.hc-detail-shop-card {
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  border: 1.5px solid var(--gray-border);
+  border-radius: 14px;
+  padding: 14px;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.hc-icon-scissors {
+  font-size: 1.3rem;
+  color: #c9a054;
+}
+
+.hc-detail-shop-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.hc-detail-shop-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 4px 0 0 0;
+}
+
+/* Tabla de Facturación */
+.hc-detail-table {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.95rem; /* Detalles de precios en tabla más grandes */
+}
+
+.hc-table-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hc-table-row span {
+  color: var(--text-muted);
+}
+
+.hc-table-row strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.hc-divider {
+  border: none;
+  border-top: 1.5px solid var(--gray-border);
+  margin: 8px 0;
+}
+
+/* Reseña del Historial */
+.hc-detail-review {
+  margin-top: 24px;
+  background-color: #fdfbf7;
+  border-left: 4px solid var(--gold-primary);
+  padding: 14px;
+  border-radius: 6px;
+}
+
+.hc-detail-review h5 {
+  margin: 0 0 6px 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #c9a054;
+}
+
+.hc-detail-review p {
+  font-size: 0.9rem;
+  color: #333335;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Acciones Inferiores Rediseñadas */
+.hc-detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.hc-btn-rebook {
+  background-color: var(--gold-primary);
+  color: #000000;
+  border: none;
+  padding: 14px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem; /* Texto de botón principal más legible */
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hc-btn-rebook:hover {
+  background-color: #edd193;
+}
+
+.hc-btn-go-shop {
+  background-color: #ffffff;
+  color: var(--text-main);
+  border: 1.5px solid #cccccc;
+  padding: 14px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hc-btn-go-shop:hover {
+  background-color: #fafafa;
+}
+
+.hc-empty-message {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 25px;
+  font-size: 1rem;
+}

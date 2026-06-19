@@ -1,5 +1,4 @@
 
-
 :root {
   --ve-gold: #f0c75e;
   --ve-gold-dark: #d8b24a;
@@ -25,7 +24,7 @@
 }
 
 .ve-logo {
-  height: 48px;
+  height: 80px;
   object-fit: contain;
 }
 
@@ -218,18 +217,46 @@
   color: #1a1a1a;
 }
 
-/* ---------------- COMENTARIO GENERAL ---------------- */
-.ve-comentario-general {
+/* ---------------- FOOTER DE ACCIONES ---------------- */
+.ve-acciones-footer {
+  display: flex;
+  justify-content: center;   /* antes: flex-end */
+  align-items: center;
+  gap: 32px;
   margin-top: 48px;
-  text-align: center;
 }
 
-.ve-comentario-general span {
+
+.ve-btn-regresar {
+  background: transparent;
+  border: none;
   font-size: 16px;
   font-weight: 600;
-  border-bottom: 2px solid #1a1a1a;
-  padding-bottom: 6px;
   cursor: pointer;
+  color: #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 4px;
+}
+
+.ve-btn-regresar:hover {
+  color: var(--ve-gold-dark);
+  border-color: var(--ve-gold-dark);
+}
+
+.ve-btn-comentario-general {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 4px;
+}
+
+.ve-btn-comentario-general:hover {
+  color: var(--ve-gold-dark);
+  border-color: var(--ve-gold-dark);
 }
 
 /* ---------------- RESPONSIVE ---------------- */
