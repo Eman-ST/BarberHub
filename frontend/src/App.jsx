@@ -6,7 +6,6 @@ import VerificarCorreo from "./pages/verificar-correo";
 import AgendaLocal from "./pages/agenda-local";
 import DatosReserva from "./pages/datos-reserva";
 import CitaConfirmada from "./pages/cita-confirmada";
-import MisCitas from "./pages/MisCitas";
 import Explorar from "./pages/explorar";
 import BarberiaPerfil from "./pages/barberia-perfil";
 import MasServicios from "./pages/mas-servicios";
